@@ -1,0 +1,14 @@
+.dropdown-custom .dropdown-toggle {
+    width: 250px; /* Increase button width */
+    height: 100px; /* Increase button height */
+    font-size: 1.5rem; /* Increase font size */
+  }
+  
+  .dropdown-custom .dropdown-menu {
+    width: 250px; /* Increase dropdown menu width */
+  }
+  
+  .dropdown-custom .dropdown-item {
+    font-size: 1rem; /* Increase font size for items */
+  }
+  

@@ -1,0 +1,16 @@
+1. - resources (high, medium-high, medium, medium-low, and low resource languages), two options
+    - (1) MaLA corpus’s classification https://github.com/MaLA-LM/emma-500/blob/main/supported_languages/resource_groups.json
+    resource language (high, low) -> languages in resource languages(high, low) -> languages with evaluation scores
+    
+    - (2) Joshi et al.’s classification (https://microsoft.github.io/linguisticdiversity/assets/lang2tax.txt). TODO: convert those display names into ISO codes.
+
+
+
+- writing systems (Latin, Chinese, see. https://en.wikipedia.org/wiki/ISO_15924), and
+
+writing systems -> languages -> evaluation results
+
+
+- performance (e.g., bins of accuracy 0-20%, 20%-40%, 40-60%, 60-80%, 80-100%).
+
+languages that fall under 0-20%, etc.
