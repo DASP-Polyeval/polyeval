@@ -34,6 +34,9 @@ export default function SelectVariants() {
           </MenuItem>
           <MenuItem value={"SIB-200"}>SIB-200</MenuItem>
           <MenuItem value={"Taxi-1500"}>Taxi-1500</MenuItem>
+          <MenuItem value={"Flores-200"}>Flores-200(Translation)</MenuItem>
+          <MenuItem value={"XLSum"}>XLSum(Summarization)</MenuItem>
+          <MenuItem value={"Aya"}>Aya(OEG)</MenuItem>
         </Select>
       </FormControl>
       <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
@@ -50,6 +53,7 @@ export default function SelectVariants() {
           </MenuItem>
           <MenuItem value={"bloom-7b1"}>bloom-7b1</MenuItem>
           <MenuItem value={"bloomz-7b1"}>bloomz-7b1</MenuItem>
+          <MenuItem value={"CodeLlama-7b-hf"}>CodeLlama-7b-hf</MenuItem>
         </Select>
       </FormControl>
       <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
@@ -67,6 +71,8 @@ export default function SelectVariants() {
           <MenuItem value={"aah_Latn"}>aah_Latn</MenuItem>
           <MenuItem value={"aai_Latn"}>aai_Latn</MenuItem>
           <MenuItem value={"aak_Latn"}>aak_Latn</MenuItem>
+          <MenuItem value={"aak_Latn"}>ace_Arab</MenuItem>
+          <MenuItem value={"amh_Ethi"}>amh_Ethi</MenuItem>
         </Select>
       </FormControl>
     </div>

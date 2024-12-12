@@ -4,9 +4,11 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 
-import StickyHeadTable from "./DataTable";
 import SelectVariants from "./Selection";
-import TranslateButton from "./TranslateButton";
+import TableForMachineTranslaiton from "./TableForMachineTranslation";
+import TableForTextClassification from "./TableForTextClassification";
+import TableForOpenEndedGen from "./TableForOpenEndedGen";
+import TableForSummarization from "./TableForSummarization";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,32 +49,35 @@ export default function BasicTabs() {
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <SelectVariants />
         <Tabs
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Error Analysis" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Text Classification" {...a11yProps(0)} />
+          <Tab label="Machine Translation" {...a11yProps(1)} />
+          <Tab label="Summarization" {...a11yProps(2)} />
+          {/* <Tab label="Token Classification" {...a11yProps(3)} /> */}
+          <Tab label="Open-ended Generation" {...a11yProps(4)} />
         </Tabs>
       </Box>
 
       {/* Error Analysis Tab */}
       <CustomTabPanel value={value} index={0}>
         <span style={{ display: "flex", justifyContent: "space-between" }}>
-          <SelectVariants />
-          <TranslateButton />
+          {/* <TranslateButton /> */}
         </span>
         {/* Result Table */}
-        <StickyHeadTable />
+        <TableForTextClassification />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <TableForMachineTranslaiton />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
+        <TableForSummarization />
       </CustomTabPanel>
+      <CustomTabPanel value={value} index={4}><TableForOpenEndedGen /></CustomTabPanel>
     </Box>
   );
 }

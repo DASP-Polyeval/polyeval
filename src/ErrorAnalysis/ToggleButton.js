@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@mui/material";
-export default function TranslateButton({ selectedRow }) {
+export default function ToggleButton({ selectedRow }) {
   
   
   function handleClick(event) {}
@@ -14,7 +14,7 @@ export default function TranslateButton({ selectedRow }) {
         disabled={!selectedRow}
         onClick={handleClick}
       >
-        translate
+        toggle
       </Button>
     </div>
   );
