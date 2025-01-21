@@ -1,0 +1,23 @@
+.rating-container {
+    
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 15px;
+    color: rgb(57, 57, 57);
+    cursor: pointer;
+    padding: 10px;
+  
+  }
+ 
+
+
+  
+  .star {
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .star.filled {
+    color: rgb(249, 224, 82);
+  }
+  

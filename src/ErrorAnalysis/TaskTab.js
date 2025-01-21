@@ -1,5 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
+
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
@@ -58,8 +59,8 @@ export default function BasicTabs() {
           <Tab label="Text Classification" {...a11yProps(0)} />
           <Tab label="Machine Translation" {...a11yProps(1)} />
           <Tab label="Summarization" {...a11yProps(2)} />
-          {/* <Tab label="Token Classification" {...a11yProps(3)} /> */}
-          <Tab label="Open-ended Generation" {...a11yProps(4)} />
+          <Tab label="Open-ended Generation" {...a11yProps(3)} />
+          {/* <Tab label="Token Classification" {...a11yProps(4)} /> */}
         </Tabs>
       </Box>
 
@@ -72,12 +73,14 @@ export default function BasicTabs() {
         <TableForTextClassification />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <TableForMachineTranslaiton />
+      <TableForMachineTranslaiton />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <TableForSummarization />
       </CustomTabPanel>
-      <CustomTabPanel value={value} index={4}><TableForOpenEndedGen /></CustomTabPanel>
+      <CustomTabPanel value={value} index={3}>
+        <TableForOpenEndedGen />
+        </CustomTabPanel>
     </Box>
   );
 }

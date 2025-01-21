@@ -1,0 +1,30 @@
+.text-highlighter {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .color-picker label {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .color-picker select {
+    font-size: 16px;
+    padding: 5px;
+    margin: 10px 0;
+  }
+  
+  h1 {
+    color: #161616;
+  }
+  
+  .highlightable-text {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
