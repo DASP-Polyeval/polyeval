@@ -1,21 +1,14 @@
 import React from "react";
-import BasicTabs from "./TaskTab";
-import { Link, Outlet } from "react-router-dom";
+
+import Selector from "./Selector";
+
 function ErrorAnalysis() {
   return (
     <>
       <div>
         <h2>4.1 Error Analysis</h2>
-        {/* <nav>
-          <ul>
-            <li>
-              <Link to="/analysis/rating">Rating</Link>
-            </li>
-          </ul>
-        </nav>
-        <Outlet /> */}
+        <Selector />
       </div>
-      <BasicTabs />
     </>
   );
 }
