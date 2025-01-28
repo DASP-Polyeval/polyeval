@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from flask_cors import CORS
 import json
+from deep_translator import GoogleTranslator
 
 app = Flask(__name__)
 
@@ -204,9 +205,34 @@ def get_json():
         print(error_message)  
         return jsonify({"error": error_message}), 500
 
+@app.route('/api/translate', methods=['POST'])
+def translation():
+    try:
+        # Receive JSON data from the frontend
+        data = request.get_json()
+        print("Received data:", data)  # Add logging for debugging
+        
+        # Extract the sentence to be translated and the target language
+        text = data.get('text')
+        target_lang = data.get('target_lang', 'en')  # Default to translating into English
 
+        if not text:
+            return jsonify({"error": "No text provided for translation."}), 400
+
+        # Perform translation using Google Translate
+        translated_text = GoogleTranslator(source='auto', target=target_lang).translate(text)
+
+        # Return the translation result
+        return jsonify({
+            "original_text": text,
+            "translated_text": translated_text,
+            "target_lang": target_lang
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
 # Entry point for the script
 if __name__ == "__main__":
     with app.app_context(): 
         init_db()  # Initialize database with sample data
-    app.run(debug=True)
+    app.run(debug=True,port=5001)

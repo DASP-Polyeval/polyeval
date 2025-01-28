@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Box, Button } from "@mui/material";
 export default function TranslateButton({ selectedRow }) {
@@ -6,22 +6,64 @@ export default function TranslateButton({ selectedRow }) {
   const [targetLang, setTargetLang] = useState("en");
   const [translatedText, setTranslatedText] = useState("");
 
-  const handleTranslate = async () => {
-    const data = { text: selectedRow.text, target_lang: targetLang };
+  useEffect(() => {
+    if (text) {
+      const translateText = async () => {
+        try {
+          const response = await axios.post(
+            "http://127.0.0.1:5001/api/translate",
+            {
+              text: text,
+              target_language: targetLang,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          setTranslatedText(response.data.translated_text);
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Translation failed.");
+        }
+      };
+      translateText();
+    }
+  }, [text, targetLang]); // when text or targetLang changes, call translateText
 
-    try {
-      const response = await axios.post(
-        "http://127.0.0.1:5000/translate",
-        data
-      );
-      if (response.data.translated_text) {
-        setTranslatedText(response.data.translated_text); // update the translated text state
-      } else {
-        alert("Translation failed.");
+  const handleTranslate = () => {
+    if (selectedRow) {
+      switch (selectedRow.task_type) {
+        case "classification":
+          setText(selectedRow?.Prompt || "No data");
+          break;
+        case "generation":
+          setText(
+            `Prompt: ${selectedRow?.Prompt || "No data"}\nGenerated Text: ${
+              selectedRow?.Generated_Text || "No data"
+            }`
+          );
+          break;
+        case "translation":
+          setText(
+            `Reference_Text: ${
+              selectedRow?.Reference_Text || "No data"
+            }\nSource_Text: ${
+              selectedRow?.Source_Text || "No data"
+            }\nTranslated_Text: ${selectedRow?.Translated_Text || "No data"}`
+          );
+          break;
+        case "summarization":
+          setText(
+            `Document: ${selectedRow?.Document || "No data"}\nSummary: ${
+              selectedRow?.Summary || "No data"
+            }`
+          );
+          break;
+        default:
+          setText("Unknown task type");
       }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Failed to translate text.");
     }
   };
 

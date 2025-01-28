@@ -47,7 +47,7 @@ const Selector = () => {
   // Fetch and Handle dropdown menus changes
   const fetchOptions = useCallback(() => {
     axios
-      .post("http://127.0.0.1:5000/api/options", {
+      .post("http://127.0.0.1:5001/api/options", {
         task_type: selectedTaskType,
         benchmark: selectedBenchmark,
         model: selectedModel,
@@ -117,7 +117,7 @@ const Selector = () => {
     setCorrectFilter(""); // Clear Correct Category filter
 
     axios
-      .post("http://127.0.0.1:5000/api/get-json", {
+      .post("http://127.0.0.1:5001/api/get-json", {
         task_type: selectedTaskType,
         benchmark: selectedBenchmark,
         model: selectedModel,
