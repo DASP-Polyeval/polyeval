@@ -2,12 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Box, Drawer, Typography, TextField, Button } from "@mui/material";
 
 import Rating from "../Components/Rating/Rating";
+import AnnotationGuidelines from "../Components/Guideline/AnnotationGuideline";
 
 const CommentSidebar = ({ isOpen, onClose, selectedRow, onSubmit }) => {
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(5);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
+  const [showGuidelines, setShowGuidelines] = useState(false);
+
+  const toggleGuidelines = () => {
+    setShowGuidelines((prev) => !prev); // switch the state of showGuidelines
+  };
 
   useEffect(() => {
     if (selectedRow) {
@@ -59,13 +65,24 @@ const CommentSidebar = ({ isOpen, onClose, selectedRow, onSubmit }) => {
         <Typography variant="h6" gutterBottom>
           Review Row {selectedRow?.ID || "Unknown"}
         </Typography>
+        <Button variant="contained" color="primary" onClick={toggleGuidelines}>
+          {showGuidelines
+            ? "Hide Annotation Guidelines"
+            : "Show Annotation Guidelines"}
+        </Button>
+        {showGuidelines && (
+          <div style={{ marginTop: "20px" }}>
+            <AnnotationGuidelines />
+          </div>
+        )}
 
+        {/* input */}
         <Typography variant="body1" gutterBottom>
           <strong>Input:</strong>
         </Typography>
         {input}
 
-        {/* Output 高亮 */}
+        {/* Output */}
         <Typography variant="body1" gutterBottom>
           <strong>Output:</strong>
         </Typography>
@@ -80,9 +97,12 @@ const CommentSidebar = ({ isOpen, onClose, selectedRow, onSubmit }) => {
           onChange={(e) => setComment(e.target.value)}
           margin="normal"
         />
+
+        {/* Rating */}
         <Typography variant="body2" gutterBottom>
           <strong>Rating:</strong> {<Rating />}
         </Typography>
+
         <Button
           variant="contained"
           color="primary"

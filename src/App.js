@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -11,13 +10,12 @@ import {
 
 import ErrorAnalysis from "./ErrorAnalysis/ErrorAnalysis";
 
-import LoginSignup from "./Components/LoginSignup/LoginSignup";
 import TextHighlighter from "./Components/TextHighlighter";
 
 import Login from "./Auth/Login";
 import Signup from "./Auth/Signup";
 import ReviewComment from "./ReviewComment/ReviewComment";
-
+import AnnotationGuidelines from "./Components/Guideline/AnnotationGuideline";
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem("token");
@@ -46,6 +44,9 @@ function App() {
             </li>
             <li>
               <Link to="/analysis">ErrorAnalysis</Link>
+            </li>
+            <li>
+              <Link to="/guide">AnnotationGuidelines </Link>
             </li>
           </ul>
         </nav>
@@ -87,12 +88,11 @@ function App() {
           />
           // task4.1
           <Route path="/analysis/*" element={<ErrorAnalysis />} />
+          <Route path="/guide/*" element={<AnnotationGuidelines />} />
         </Routes>
       </div>
     </Router>
   );
 }
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(<App />);
 
 export default App;
