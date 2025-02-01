@@ -44,22 +44,13 @@ class Comment(db.Model):
 
     output_id = db.Column(db.Integer, db.ForeignKey('output.id'), nullable=False)
 
-class OutputsFilePath(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    task_type = db.Column(db.String(50), nullable=False)  # 任务类型
-    benchmark_name = db.Column(db.String(100), nullable=False)  # 数据库名称
-    model_name = db.Column(db.String(100), nullable=False)  # 模型名称
-    language = db.Column(db.String(50), nullable=False)  # 语言名称
-    file_path = db.Column(db.Text, nullable=False)  # 文件路径
+    text = db.Column(db.Text, nullable=False)
+    error_type = db.Column(db.String(50), primary_key=True, nullable=False)
+    span = db.Column(db.list, primary_key=True, nullable=False)
+    rating = db.Column(db.Integer, primary_key=True, nullable=False)
 
-class Output(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    file_id = db.Column(db.Integer, db.ForeignKey('outputs_file_path.id'), nullable=False)
-    benchmark_name = db.Column(db.String(100), nullable=False)  # 数据库名称
-    model_name = db.Column(db.String(100), nullable=False)  # 模型名称
-    language = db.Column(db.String(50), nullable=False)  # 语言名称
-    input_text = db.Column(db.Text, nullable=False)
-    output_text = db.Column(db.Text, nullable=False)
+
+
 
 
 # Authentication decorator

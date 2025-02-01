@@ -78,7 +78,6 @@ export default function TranslateButton({ selectedRow }) {
               onChange={(e) => setTargetLang(e.target.value)}
             >
               <option value="en">English</option>
-              <option value="zh">Chinese</option>
               <option value="es">Spanish</option>
               <option value="fr">French</option>
               <option value="de">German</option>
@@ -91,7 +90,7 @@ export default function TranslateButton({ selectedRow }) {
             disabled={!selectedRow}
             onClick={handleTranslate}
           >
-            Translate
+            Google Translate
           </Button>
         </Box>
 

@@ -3,7 +3,7 @@ import { Box, Drawer, Typography, TextField, Button } from "@mui/material";
 
 import Rating from "../HumanRating/Rating";
 import AnnotationGuidelines from "../HumanRating/AnnotationGuideline";
-
+import TextHighlighter from "../HumanRating/TextHighlighter";
 const CommentSidebar = ({ isOpen, onClose, selectedRow, onSubmit }) => {
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(5);
@@ -86,7 +86,8 @@ const CommentSidebar = ({ isOpen, onClose, selectedRow, onSubmit }) => {
         <Typography variant="body1" gutterBottom>
           <strong>Output:</strong>
         </Typography>
-        {output}
+
+        <TextHighlighter output={output} />
 
         <TextField
           label="Comment"
