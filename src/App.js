@@ -10,12 +10,10 @@ import {
 
 import ErrorAnalysis from "./ErrorAnalysis/ErrorAnalysis";
 
-import TextHighlighter from "./Components/TextHighlighter";
-
 import Login from "./Auth/Login";
 import Signup from "./Auth/Signup";
 import ReviewComment from "./ReviewComment/ReviewComment";
-import AnnotationGuidelines from "./Components/Guideline/AnnotationGuideline";
+import AnnotationGuidelines from "./HumanRating/AnnotationGuideline";
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem("token");

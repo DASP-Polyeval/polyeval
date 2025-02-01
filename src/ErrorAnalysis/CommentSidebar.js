@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Box, Drawer, Typography, TextField, Button } from "@mui/material";
 
-import Rating from "../Components/Rating/Rating";
-import AnnotationGuidelines from "../Components/Guideline/AnnotationGuideline";
+import Rating from "../HumanRating/Rating";
+import AnnotationGuidelines from "../HumanRating/AnnotationGuideline";
 
 const CommentSidebar = ({ isOpen, onClose, selectedRow, onSubmit }) => {
   const [comment, setComment] = useState("");
