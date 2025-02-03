@@ -46,7 +46,7 @@ class Comment(db.Model):
 
     text = db.Column(db.Text, nullable=False)
     error_type = db.Column(db.String(50), primary_key=True, nullable=False)
-    span = db.Column(db.list, primary_key=True, nullable=False)
+    span = db.Column(db.String, primary_key=True, nullable=False)
     rating = db.Column(db.Integer, primary_key=True, nullable=False)
 
 

@@ -135,10 +135,10 @@ const Selector = () => {
           // set unique category values if task_type is classification
           if (task_type === "classification") {
             setUniquePredictedCategories([
-              ...new Set(json_data.map((row) => row["Predicted Category"])),
+              ...new Set(json_data.map((row) => row["Predicted_Category"])),
             ]);
             setUniqueCorrectCategories([
-              ...new Set(json_data.map((row) => row["Correct Category"])),
+              ...new Set(json_data.map((row) => row["Correct_Category"])),
             ]);
           } else {
             setUniquePredictedCategories([]);
@@ -187,13 +187,13 @@ const Selector = () => {
 
     if (predictedFilter) {
       filtered = filtered.filter(
-        (row) => row["Predicted Category"] === predictedFilter
+        (row) => row["Predicted_Category"] === predictedFilter
       );
     }
 
     if (correctFilter) {
       filtered = filtered.filter(
-        (row) => row["Correct Category"] === correctFilter
+        (row) => row["Correct_Category"] === correctFilter
       );
     }
 
