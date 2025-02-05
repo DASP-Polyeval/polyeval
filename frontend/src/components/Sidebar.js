@@ -18,7 +18,7 @@ import {
 import HierarchyCheckboxTree from "./HierarchyCheckboxTree";
 
 const steps = [
-  "Select Dataset",
+  "Select Benchmark",
   "Select Metric",
   "Choose Filter Type",
   "Select Filter Value",
@@ -339,6 +339,10 @@ const Sidebar = ({ onComplete, selectedTab, taskOptions }) => {
         </Box>
       </Box>
     );
+  };
+
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
   return (

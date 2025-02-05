@@ -93,6 +93,10 @@ const HierarchyCheckboxTree = ({ data, onSelectionChange }) => {
     setOpenParents((prev) => ({ ...prev, [parent]: !prev[parent] }));
   };
 
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   return (
     <Box sx={{ width: 300 }}>
       <List>
@@ -108,7 +112,9 @@ const HierarchyCheckboxTree = ({ data, onSelectionChange }) => {
                   onChange={() => handleParentToggle(parent)}
                 />
               </ListItemIcon>
-              <ListItemText primary={parent} />
+              <ListItemText 
+                primary={`${capitalizeFirstLetter(parent)}${parent !== 'unseen' ? ' Resource' : ''}`} 
+              />
               <IconButton onClick={() => toggleCollapse(parent)}>
                 {openParents[parent] ? <ExpandLess /> : <ExpandMore />}
               </IconButton>
