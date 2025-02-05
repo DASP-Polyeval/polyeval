@@ -40,10 +40,14 @@ const Sidebar = ({ onComplete, selectedTab, taskOptions }) => {
   const datasetOptions = taskOptions[selectedTab]?.dataset || [];
   const metricOptions = taskOptions[selectedTab]?.metric || [];
 
-  // Reset dataset and metric when tab changes
+  // Reset activeStep when tab changes
   useEffect(() => {
+    setActiveStep(0);
     setDataset("");
     setMetric("");
+    setFilterType("");
+    setFilterValue("");
+    setWizardComplete(false);
   }, [selectedTab]);
 
   // When dataset is selected, fetch CSV to extract models and languages
@@ -265,7 +269,6 @@ const Sidebar = ({ onComplete, selectedTab, taskOptions }) => {
               <HierarchyCheckboxTree
                 data={availableLanguages}
                 onSelectionChange={(selected) => {
-                  console.log("Language Selection:", selected);
                   setFilterValue(selected);
                 }}
               />
