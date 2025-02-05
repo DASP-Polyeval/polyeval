@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   Box,
   List,
@@ -8,85 +8,61 @@ import {
   Checkbox,
   IconButton,
   Collapse,
+  Chip,
 } from "@mui/material";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 
 const HierarchyCheckboxTree = ({ data, onSelectionChange }) => {
+  // Preprocess data if it's a nested object of languages
+  const processedData = useMemo(() => {
+    // If data is an object with language codes as keys, convert to standard format
+    if (data && typeof data === 'object' && Object.keys(data).every(key => key.includes('_'))) {
+      return {
+        'languages': Object.keys(data)
+      };
+    }
+    return data;
+  }, [data]);
+
   // data is an object where each key is a parent and its value is an array of child values
-  const [checked, setChecked] = useState({});
+  const [selectedItems, setSelectedItems] = useState({});
   const [openParents, setOpenParents] = useState({});
 
   // Initialize checked states and collapsed state for all parent items
   useEffect(() => {
-    const initialChecked = {};
+    const initialSelectedItems = {};
     const initialOpen = {};
-    Object.keys(data).forEach((parent) => {
-      initialChecked[parent] = { parent: false, children: {} };
-      data[parent].forEach((child) => {
-        initialChecked[parent].children[child] = false;
+    Object.keys(processedData || {}).forEach((parent) => {
+      // Initialize each parent with an empty object of children
+      initialSelectedItems[parent] = {};
+      (processedData[parent] || []).forEach((child) => {
+        // Explicitly set each child to false
+        initialSelectedItems[parent][child] = false;
       });
       // Parent collapsed by default.
       initialOpen[parent] = false;
     });
-    setChecked(initialChecked);
+    setSelectedItems(initialSelectedItems);
     setOpenParents(initialOpen);
-  }, [data]);
+  }, [processedData]);
 
-  // Call onSelectionChange whenever 'checked' state updates
+  // Call onSelectionChange whenever 'selectedItems' state updates
   useEffect(() => {
     if (onSelectionChange) {
       const selected = [];
-      Object.keys(checked).forEach((parent) => {
-        Object.entries(checked[parent].children)
-          .filter(([child, isChecked]) => isChecked)
-          .forEach(([child]) => selected.push(child));
+      Object.keys(selectedItems).forEach((parent) => {
+        Object.keys(selectedItems[parent]).forEach((child) => {
+          if (selectedItems[parent][child]) {
+            selected.push(child);
+          }
+        });
       });
 
+      // Ensure we pass an array, not an object
       onSelectionChange(selected);
     }
-  }, [checked, onSelectionChange]);
-
-  // When a parent is toggled, update its state and also set all its children accordingly.
-  const handleParentToggle = (parent) => {
-    setChecked((prev) => {
-      const parentChecked = !prev[parent].parent;
-      const updatedChildren = {};
-      Object.keys(prev[parent].children).forEach((child) => {
-        updatedChildren[child] = parentChecked;
-      });
-      return {
-        ...prev,
-        [parent]: {
-          parent: parentChecked,
-          children: updatedChildren,
-        },
-      };
-    });
-  };
-
-  // When a child is toggled, update its state and then recalc the parent's state.
-  const handleChildToggle = (parent, child) => {
-    setChecked((prev) => {
-      const newChildValue = !prev[parent].children[child];
-      const updatedChildren = {
-        ...prev[parent].children,
-        [child]: newChildValue,
-      };
-      // If all children are checked, parent's checkbox becomes checked.
-      const allChecked = Object.values(updatedChildren).every(
-        (v) => v === true
-      );
-      const newParentValue = allChecked;
-      return {
-        ...prev,
-        [parent]: {
-          parent: newParentValue,
-          children: updatedChildren,
-        },
-      };
-    });
-  };
+  }, [selectedItems, onSelectionChange]);
 
   // Toggle collapse for a parent.
   const toggleCollapse = (parent) => {
@@ -100,42 +76,91 @@ const HierarchyCheckboxTree = ({ data, onSelectionChange }) => {
   return (
     <Box sx={{ width: 300 }}>
       <List>
-        {Object.keys(data).map((parent) => (
+        {Object.keys(processedData || {}).map((parent) => (
           <React.Fragment key={parent}>
             <ListItem>
               <ListItemIcon>
                 <Checkbox
                   edge="start"
-                  checked={checked[parent]?.parent || false}
+                  checked={Object.values(selectedItems[parent] || {}).some(
+                    (v) => v === true
+                  )}
                   tabIndex={-1}
                   disableRipple
-                  onChange={() => handleParentToggle(parent)}
+                  onChange={() => {
+                    const newSelectedItems = { ...selectedItems };
+                    if (!newSelectedItems[parent]) {
+                      newSelectedItems[parent] = {};
+                    }
+                    const someChecked = Object.values(
+                      newSelectedItems[parent]
+                    ).some((v) => v === true);
+                    Object.keys(newSelectedItems[parent]).forEach((child) => {
+                      newSelectedItems[parent][child] = !someChecked;
+                    });
+                    setSelectedItems(newSelectedItems);
+                    onSelectionChange(
+                      Object.keys(newSelectedItems).flatMap((p) => 
+                        Object.keys(newSelectedItems[p]).filter(
+                          (child) => newSelectedItems[p][child]
+                        )
+                      )
+                    );
+                  }}
                 />
               </ListItemIcon>
-              <ListItemText 
-                primary={`${capitalizeFirstLetter(parent)}${parent !== 'unseen' ? ' Resource' : ''}`} 
+              <ListItemText
+                primary={`${capitalizeFirstLetter(parent)}${
+                  parent !== "unseen" ? " Resource" : ""
+                }`}
               />
               <IconButton onClick={() => toggleCollapse(parent)}>
                 {openParents[parent] ? <ExpandLess /> : <ExpandMore />}
               </IconButton>
             </ListItem>
             <Collapse in={openParents[parent]} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                {data[parent].map((child) => (
-                  <ListItem key={child} sx={{ pl: 4 }}>
-                    <ListItemIcon>
-                      <Checkbox
-                        edge="start"
-                        checked={checked[parent]?.children[child] || false}
-                        tabIndex={-1}
-                        disableRipple
-                        onChange={() => handleChildToggle(parent, child)}
-                      />
-                    </ListItemIcon>
-                    <ListItemText primary={child} />
-                  </ListItem>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: 1,
+                  pl: 4,
+                  py: 1,
+                }}
+              >
+                {(processedData[parent] || []).map((child) => (
+                  <Chip
+                    key={child}
+                    label={child}
+                    clickable
+                    color={selectedItems[parent]?.[child] ? "primary" : "default"}
+                    variant={selectedItems[parent]?.[child] ? "filled" : "outlined"}
+                    onClick={() => {
+                      const newSelectedItems = { ...selectedItems };
+                      if (!newSelectedItems[parent]) {
+                        newSelectedItems[parent] = {};
+                      }
+                      newSelectedItems[parent][child] = !newSelectedItems[parent]?.[child];
+                      setSelectedItems(newSelectedItems);
+                      
+                      // Flatten selected items for onSelectionChange
+                      const selected = Object.keys(newSelectedItems).flatMap(
+                        (p) => Object.keys(newSelectedItems[p]).filter(
+                          (c) => newSelectedItems[p][c]
+                        )
+                      );
+                      onSelectionChange(selected);
+                    }}
+                    sx={{
+                      m: 0.5,
+                      "& .MuiChip-label": {
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      },
+                    }}
+                  />
                 ))}
-              </List>
+              </Box>
             </Collapse>
           </React.Fragment>
         ))}
