@@ -42,8 +42,7 @@ const HierarchyCheckboxTree = ({ data, onSelectionChange }) => {
           .filter(([child, isChecked]) => isChecked)
           .forEach(([child]) => selected.push(child));
       });
-      
-      console.log('HierarchyCheckboxTree Selection:', selected);
+
       onSelectionChange(selected);
     }
   }, [checked, onSelectionChange]);

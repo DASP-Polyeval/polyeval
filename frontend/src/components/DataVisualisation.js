@@ -15,16 +15,16 @@ const DataVisualisation = () => {
       metric: ["accuracy"],
     },
     1: {
-      dataset: ["Flores200"],
-      metric: ["BLEU", "chrf++"],
+      dataset: ["Flores200 Eng-X", "Flores200 X-Eng"],
+      metric: ["BLEU", "chrF"],
     },
     2: {
       dataset: ["XLSum"],
-      metric: ["ROUGE"],
+      metric: ["BERTScore", "ROUGE"],
     },
     3: {
-      dataset: ["Aya", "PolyEval"],
-      metric: ["BLEU", "Self-BLEU"],
+      dataset: ["Aya", "Aya-Self", "PolyWrite"],
+      metric: ["BLEU"],
     },
     4: {
       dataset: ["BELEBELE", "arc_multilingual"],
@@ -38,7 +38,6 @@ const DataVisualisation = () => {
 
   const handleTabChange = (event, newValue) => {
     setSelectedTab(newValue);
-    console.log(selectedTab);
     setFilters(null); // Reset filters when changing tabs
   };
 
