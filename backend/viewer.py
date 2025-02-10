@@ -3,7 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from flask_cors import CORS
 import json
-from deep_translator import GoogleTranslator
+from deep_translator import (GoogleTranslator,single_detection)
+import re
 
 app = Flask(__name__)
 
@@ -24,33 +25,98 @@ class Output(db.Model):
     model = db.Column(db.String(50), nullable=False)
     language = db.Column(db.String(20), nullable=False)
     path = db.Column(db.String(200), nullable=False)
+    file_id = db.Column(db.String(50), unique=True, nullable=False)
 
     def __repr__(self):
         return f"<Output {self.benchmark} - {self.model} - {self.language}>"
+
+TASK_BENCHMARK_MAP = {
+    "classification": ["SIB-200"],
+    "translation": ["Flores-200"],
+    "summarization": ["XLSum"],
+    "generation": ["Aya"]
+}
 
 # Initialize the database
 def init_db():
         with app.app_context():
             db.create_all()
 
-        # Example data (only insert if database is empty)
-        if not Output.query.first():
-            output_folder = "outputs"
-            current_dir = os.path.dirname(__file__)
+# Function to scan directory and update database
+def generate_index_json(root_dir):
+    """Sync the database with the directory structure."""
+    with app.app_context():
+        index = {}
+        for task_type, benchmarks in TASK_BENCHMARK_MAP.items():
+            index[task_type] = {}  # initialize task_type
+            
+            for benchmark in benchmarks:
+                benchmark_path = os.path.join(root_dir, benchmark)
+                index[task_type][benchmark] = {}  # initialize benchmark
 
-            example_data = [
-                Output(task_type = "classification", benchmark="SIB-200", model="bloom-7b1", language="ace_Arab",
-                       path=os.path.join(current_dir,output_folder, "SIB-200", "bloom-7b1", "ace_Arab.jsonl")),
-                Output(task_type = "translation", benchmark="Flores-200", model="gemma-7b", language="eng_Latn-to-ace_Arab",
-                       path=os.path.join(current_dir,output_folder, "Flores-200", "en-X","gemma-7b", "eng_Latn-to-ace_Arab.jsonl")),
-                Output(task_type = "summarization", benchmark="XLSum", model="mGPT", language="amh_Ethi",
-                       path=os.path.join(current_dir,output_folder, "XLSum", "mGPT", "amh_Ethi.jsonl")),
-                Output(task_type = "generation", benchmark="Aya", model="bloomz-7b1", language="ace_Arab",
-                       path=os.path.join(current_dir,output_folder, "Aya", "bloomz-7b1", "ace_Arab.jsonl")),
-               
-            ]
-            db.session.bulk_save_objects(example_data)
-            db.session.commit()
+                if not os.path.exists(benchmark_path):
+                    continue
+
+                # handle the translation task differently
+                if task_type == "translation":
+                    for lang_type_folder in os.listdir(benchmark_path):
+                        lang_path = os.path.join(benchmark_path, lang_type_folder)
+                        if not os.path.isdir(lang_path):
+                            continue
+
+                        for model in os.listdir(lang_path):
+                            model_path = os.path.join(lang_path, model)
+                            if not os.path.isdir(model_path):
+                                continue
+
+                            index[task_type][benchmark][model] = []
+                            for file in os.listdir(model_path):
+                                if file.endswith(".jsonl"):
+                                    language = file.replace(".jsonl", "")
+                                    index[task_type][benchmark][model].append(language)
+
+                                    file_path = os.path.join(model_path, file)
+                                    record = Output.query.filter_by(path=file_path).first()
+                                    if not record:
+                                        new_entry = Output(
+                                            task_type=task_type,
+                                            benchmark=benchmark,
+                                            model=model,
+                                            language=language,
+                                            path=file_path,
+                                            file_id=f"{task_type}-{benchmark}-{model}-{language}"
+                                        )
+                                        db.session.add(new_entry)
+
+                else:
+                    # handle other task type
+                    for model in os.listdir(benchmark_path):
+                        model_path = os.path.join(benchmark_path, model)
+                        if not os.path.isdir(model_path):
+                            continue
+
+                        index[task_type][benchmark][model] = []
+                        for file in os.listdir(model_path):
+                            if file.endswith(".jsonl"):
+                                language = file.replace(".jsonl", "")
+                                index[task_type][benchmark][model].append(language)
+
+                                file_path = os.path.join(model_path, file)
+                                record = Output.query.filter_by(path=file_path).first()
+                                if not record:
+                                    new_entry = Output(
+                                        task_type=task_type,
+                                        benchmark=benchmark,
+                                        model=model,
+                                        language=language,
+                                        path=file_path,
+                                        file_id= f"{task_type}-{benchmark}-{model}-{language}"
+                                    )
+                                    db.session.add(new_entry)
+
+        db.session.commit()
+    with open("path_structure.json", "w") as f:
+        json.dump(index, f, indent=4)
 
 # Get the options for the dropdowns 
 @app.route("/api/options", methods=["POST"])
@@ -60,7 +126,6 @@ def get_options():
     selected_model = data.get("model")  # selected model
     selected_language = data.get("language")  # Selected language
     selected_task_type = data.get("task_type") # Selected task type
-
     # dynamically query task_type
     task_types_query = Output.query
     if selected_benchmark:
@@ -112,12 +177,8 @@ def get_options():
 def get_json():
     try:
         data = request.json
-        task_type = data.get("task_type")
-        benchmark = data.get("benchmark")
-        model = data.get("model")
-        language = data.get("language")
+        task_type, benchmark, model, language = data.get("task_type"), data.get("benchmark"), data.get("model"), data.get("language")
         
-
         # Query the database for the matching record
         record = Output.query.filter_by(benchmark=benchmark, model=model, language=language).first()
         if record:
@@ -125,7 +186,7 @@ def get_json():
                 with open(record.path, "r", encoding="utf-8") as file:
                     json_array = [json.loads(line) for line in file.readlines()]
                     table_data = [
-                        {**row, "task_type": record.task_type, "unique_id": f"{record.id}-{i + 1}"}
+                        {**row, "task_type": record.task_type, "unique_id": f"{record.file_id}-{i + 1}"}
                         for i, row in enumerate(json_array)
                     ]
                     
@@ -205,6 +266,25 @@ def get_json():
         print(error_message)  
         return jsonify({"error": error_message}), 500
 
+def detect_non_english_sentences(text):
+    #detect the non-english sentences
+    sentences = re.split(r'(?<=[.!?])\s+', text) 
+    non_english_sentences = []
+
+    for sentence in sentences:
+        if len(sentence.strip()) < 5:  # ignore short sentences
+            continue
+        try:
+            detected_lang = single_detection(sentence, api_key='29427c1051d48bff41807e59335cd649')
+            if detected_lang != "en":  
+                non_english_sentences.append((sentence, detected_lang))
+        except Exception as e:
+            print(f"failed to detect language for sentence: {sentence} - error: {e}")
+    
+    return non_english_sentences
+
+LANGS_DICT = GoogleTranslator().get_supported_languages(as_dict=True)
+SUPPORTED_LANGUAGES = list(LANGS_DICT.values())
 @app.route('/api/translate', methods=['POST'])
 def translation():
     try:
@@ -215,18 +295,35 @@ def translation():
         # Extract the sentence to be translated and the target language
         text = data.get('text')
         target_lang = data.get('target_lang', 'en')  # Default to translating into English
-
+        
         if not text:
+            print("No text provided for translation.")
             return jsonify({"error": "No text provided for translation."}), 400
+        non_english = detect_non_english_sentences(text)
+        
+        # get the detected language
+        detected_lang = non_english[0][1] if non_english else "en"
+        print(f"non-en text: {non_english}")
+
+        if detected_lang not in SUPPORTED_LANGUAGES:
+            print(f"GoogleTranslate does not support the language {SUPPORTED_LANGUAGES}")
+            return jsonify({"error": "GoogleTranslate does not support the language"}), 400
 
         # Perform translation using Google Translate
-        translated_text = GoogleTranslator(source='auto', target=target_lang).translate(text)
+        translated_text = []
+        for sentence, _ in non_english:
+            translated = GoogleTranslator(source='auto', target="en").translate(sentence)
+            translated_text.append((sentence, translated))
+
+        # translated_text = GoogleTranslator(source='auto', target=target_lang).translate(text)
+        
 
         # Return the translation result
         return jsonify({
-            "original_text": text,
-            "translated_text": translated_text,
-            "target_lang": target_lang
+            "detected_lang": detected_lang,
+            "original_text": [item[0] for item in translated_text],
+            "translated_text": [item[1] for item in translated_text],
+            "target_lang": target_lang           
         })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -235,4 +332,8 @@ def translation():
 if __name__ == "__main__":
     with app.app_context(): 
         init_db()  # Initialize database with sample data
+        output_folder = "outputs"
+        current_dir = os.path.dirname(__file__)
+        path=os.path.join(current_dir,output_folder)
+        generate_index_json(path)
     app.run(debug=True,port=5001)

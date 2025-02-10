@@ -5,6 +5,8 @@ export default function TranslateButton({ selectedRow }) {
   const [text, setText] = useState("");
   const [targetLang, setTargetLang] = useState("en");
   const [translatedText, setTranslatedText] = useState("");
+  const [originalText, setOriginalText] = useState("");
+  const [detectedLanguage, setDetectedLanguage] = useState("");
 
   useEffect(() => {
     if (text) {
@@ -23,6 +25,8 @@ export default function TranslateButton({ selectedRow }) {
             }
           );
           setTranslatedText(response.data.translated_text);
+          setDetectedLanguage(response.data.detected_lang);
+          setOriginalText(response.data.original_text);
         } catch (error) {
           console.error("Error:", error);
           alert("Translation failed.");
@@ -36,29 +40,27 @@ export default function TranslateButton({ selectedRow }) {
     if (selectedRow) {
       switch (selectedRow.task_type) {
         case "classification":
-          setText(selectedRow?.Prompt || "No data");
+          setText(`Prompt: ${selectedRow?.Prompt || "No data"}`);
           break;
         case "generation":
           setText(
-            `Prompt: ${selectedRow?.Prompt || "No data"}\nGenerated Text: ${
-              selectedRow?.Generated_Text || "No data"
-            }`
+            `Prompt: ${selectedRow?.Prompt || "No data"}
+            \nGenerated Text: ${selectedRow?.Generated_Text || "No data"}
+            \nTarget Text: ${selectedRow?.Target_Text || "No data"}`
           );
           break;
         case "translation":
           setText(
-            `Reference_Text: ${
-              selectedRow?.Reference_Text || "No data"
-            }\nSource_Text: ${
-              selectedRow?.Source_Text || "No data"
-            }\nTranslated_Text: ${selectedRow?.Translated_Text || "No data"}`
+            `Reference_Text: ${selectedRow?.Reference_Text || "No data"}
+            \nSource_Text: ${selectedRow?.Source_Text || "No data"}
+            \nTranslated_Text: ${selectedRow?.Translated_Text || "No data"}`
           );
           break;
         case "summarization":
           setText(
-            `Document: ${selectedRow?.Document || "No data"}\nSummary: ${
-              selectedRow?.Summary || "No data"
-            }`
+            `Document: ${selectedRow?.Document || "No data"}
+            \nSummary: ${selectedRow?.Summary || "No data"}
+            \nTarget: ${selectedRow?.Target || "No data"}`
           );
           break;
         default:
@@ -96,8 +98,12 @@ export default function TranslateButton({ selectedRow }) {
 
         {translatedText && (
           <Box>
+            <h3>Detected Language:</h3>
+            <pre>{detectedLanguage}</pre>
+            <h3>Original Text:</h3>
+            <pre>{originalText}</pre>
             <h3>Translated Text:</h3>
-            <p>{translatedText}</p>
+            <pre>{translatedText}</pre>
           </Box>
         )}
       </div>
