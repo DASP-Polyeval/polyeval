@@ -16,6 +16,7 @@ import {
   Chip,
 } from "@mui/material";
 import HierarchyCheckboxTree from "./HierarchyCheckboxTree";
+import { getFilename } from './FileName';
 
 const steps = [
   "Select Benchmark",
@@ -53,7 +54,8 @@ const Sidebar = ({ onComplete, selectedTab, taskOptions }) => {
   // When dataset is selected, fetch CSV to extract models and languages
   useEffect(() => {
     if (dataset) {
-      fetch(`/${dataset}.csv`)
+      const filename = getFilename(dataset);
+      fetch(`/${filename}.csv`)
         .then((response) => response.text())
         .then((text) => {
           const lines = text
@@ -93,7 +95,8 @@ const Sidebar = ({ onComplete, selectedTab, taskOptions }) => {
   useEffect(() => {
     if (wizardComplete && filterType === "model" && dataset && filterValue) {
       setIsCsvLoading(true);
-      fetch(`/${dataset}.csv`)
+      const filename = getFilename(dataset);
+      fetch(`/${filename}.csv`)
         .then((response) => response.text())
         .then((text) => {
           const lines = text

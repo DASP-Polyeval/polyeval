@@ -15,6 +15,9 @@ import {
 } from "@mui/material";
 import { BarChart } from '@mui/x-charts/BarChart';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
+import { getFilename } from './FileName';
+import { saveAs } from 'file-saver';
+import html2canvas from 'html2canvas';
 
 const TextClassification = ({ externalTabValue, filters }) => {
   const [csvData, setCsvData] = React.useState(null);
@@ -43,7 +46,7 @@ const TextClassification = ({ externalTabValue, filters }) => {
     setIsLoading(true);
 
     // Fetch CSV file
-    fetch(`/${filters.dataset}.csv`)
+    fetch(`/${getFilename(filters.dataset, filters.metric)}.csv`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
