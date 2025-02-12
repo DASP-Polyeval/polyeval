@@ -55,6 +55,7 @@ const Selector = () => {
       })
       .then((response) => {
         const { task_types, benchmarks, models, languages } = response.data;
+
         setTaskTypes(task_types); // update task type options
         setBenchmarks(benchmarks); // update benchmark options
         setModels(models); // update model options

@@ -1,0 +1,155 @@
+{"model_name": "bigscience/bloomz-7b1", "input": "Dekri yon jou sou Latè kote gravite ranvèse toudenkou pou kèk èdtan. Ki jan moun ak bèt reyaji?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Kreye yon karaktè ki te yon fwa yon ewo men ki te vin tounen yon mechan akòz yon enkonpreyansyon trajik.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri sou yon karaktè ki se dènye nan kalite yo k ap viv nan yon mond ki te deplase sou san yo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Kreye yon karaktè ki gen lonbraj vin nan lavi ak aji kòm kontrepati malfezans yo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl pou swiv yon entèvyou travay ou te fè de semèn de sa. Eksprime enterè ou kontinye nan pozisyon an, remèsye entèvyou a pou tan yo, epi mande mizajou.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ou bezwen planifye yon reyinyon ak yon kòlèg pou diskite sou pwogrè yon pwojè. Ekri yon imèl politès pou mande yon lè apwopriye pou reyinyon an epi bay yon deskripsyon tou kout.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl bay sipèvizè w la pou w mande commentaires sou yon dènye rapò ou te soumèt. Eksprime enterè ou nan amelyore travay ou epi mande sijesyon espesifik.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Fè yon imèl bay manadjè w la pou w mande eskiz paske w pa manke yon dat limit pwojè a. Eksplike rezon ki fè reta a, epi dekri etap ou yo pou asire li pa pral rive ankò.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl bay yon machann ki te delivre pwodwi ki pa kòrèk oswa ki domaje. Politès eksplike pwoblèm nan, bay detay, epi mande yon ranbousman oswa ranplasman.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl bay yon reprezantan sèvis kliyan mande enfòmasyon sou disponiblite a ak espesifikasyon nan yon pwodwi ou enterese nan achte.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ou remake yon chaj ki pa kòrèk sou bòdwo w la chak mwa. Ekri yon imèl bay depatman bòdwo a pou eksplike pwoblèm nan epi mande yon koreksyon.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Konpoze yon imèl bay yon kliyan valè remèsye yo pou biznis kontinye, epi enfòme yo sou yon pwomosyon espesyal oswa òf.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl bay depatman sèvis kliyan yon konpayi pou adrese yon move eksperyans ou te fè ak sèvis yo. Eksplike pwoblèm nan epi sijere ki jan ou ta renmen li rezoud.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Konpoze yon imèl pou mande yon retounen oswa echanj pou yon pwodwi ou te achte sou entènèt. Mete nimewo lòd ou ak rezon pou retounen an.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl bay yon zanmi ou pa te pale ak nan yon ti tan. Ratrape yo sou sa k ap pase nan lavi w epi mande yo kijan yo ye.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl remèsye yon manm fanmi oswa yon zanmi pou yon kado yo te ba ou. Fè espesifik sou poukisa ou apresye kado a ak fason ou planifye pou itilize li.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Konpoze yon imèl enfòmèl envite zanmi nan yon fèt w ap òganize. Mete detay sou dat, lè, kote, ak nenpòt aktivite espesyal.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl pou w felisite yon zanmi oswa yon kòlèg pou yon dènye reyalizasyon. Eksprime kontantman ou pou yo epi ofri mo ankourajman.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl bay yon zanmi pwòch oswa yon manm fanmi ki pataje nouvèl enteresan. Di yo detay yo ak ki jan ou santi ou sou li.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl bay biwo admisyon yon inivèsite pou mande enfòmasyon sou yon pwogram espesifik. Mande sou pwosesis aplikasyon an, dat limit, elatriye.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Konpoze yon imèl bay yon ansyen pwofesè pou mande yo ekri yon lèt rekòmandasyon pou ou. Bay detay sou pozisyon an epi ofri bay plis enfòmasyon.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl fòmèl bay yon ofisyèl gouvènman k ap adrese yon pwoblèm lokal ki konsène w. Di enkyetid ou yo, bay enfòmasyon ki bay sipò, epi sijere solisyon posib.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ou fèk kòmanse yon nouvo travay epi ou vle prezante tèt ou bay manm ekip ou a. Ekri yon imèl fòmèl prezante tèt ou epi eksprime eksitasyon ou sou travay ansanm.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Konpoze yon imèl bay yon ansyen anplwayè ki mande pou itilize yo kòm referans pou yon nouvo aplikasyon travay. Politès mande pèmisyon yo epi remèsye yo pou sipò yo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl frèt bay yon kliyan potansyèl entwodwi konpayi ou ak ofri sèvis ou yo. Mete aksan sou pwen fò ou yo epi eksplike kijan ou ka ede biznis yo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Konpoze yon imèl maketing anonse lansman yon nouvo pwodwi. Mete detay sou karakteristik pwodwi a, benefis, ak nenpòt pwomosyon espesyal oswa rabè.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl swivi bay yon kliyan potansyèl ki eksprime enterè nan pwodwi ou. Fè yo sonje avantaj yo epi ofri yo reponn nenpòt kesyon.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Konpoze yon imèl ki konfime yon nouvo abònen nan bilten konpayi ou a. Remèsye yo pou abònman, di yo kisa pou atann, epi mete yon apèl nan aksyon.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl lavant bay yon kliyan ki egziste deja ki ofri pwodwi ki gen rapò yo ta ka enterese nan ki baze sou acha anvan yo. Mete aksan sou poukisa pwodwi sa yo konplete acha yo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl bay pwofesè w la pou mande yon ekstansyon pou yon devwa. Eksplike sitiyasyon ou epi bay yon delè rezonab pou lè ou ka fini travay la.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Fè yon imèl bay kamarad klas ou yo k ap kowòdone yon pwojè gwoup. Bay travay, fikse dat limit, epi sijere yon lè reyinyon pou diskite sou pwogrè.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl bay yon pwofesè mande sou opòtinite rechèch potansyèl yo. Mete aksan sou enterè ou epi eksplike poukisa ou ta renmen travay avèk yo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon imèl bay pwofesè w la pou w mande eskiz paske w te manke yon klas akòz sikonstans enprevi. Mande si gen nenpòt materyèl ou bezwen ratrape sou.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Konpoze yon imèl bay yon ansyen pwofesè oswa yon konseye pou mande konsèy sou karyè. Eksplike yon ti tan nan sitiyasyon w kounye a epi mande konsèy sou fason pou w avanse.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Gen kèk kwè aprantisaj sou entènèt pi efikas pase aprantisaj tradisyonèl yo, pandan ke lòt moun diskite aprantisaj salklas la toujou enpòtan. Diskite tou de opinyon epi bay opinyon ou.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Gen kèk moun ki kwè pwoblèm anviwònman yo ta dwe rezoud globalman, pandan ke lòt moun panse yo ta dwe abòde lokalman. Diskite tou de opinyon epi bay opinyon ou.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Gen kèk kwè reyalize balans travay-lavi pi difisil jodi a pase nan tan lontan an. Nan ki pwen ou dakò oswa ou pa dakò ak deklarasyon sa a?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan anpil peyi, pwa an mwayèn nan moun ap ogmante, pandan y ap nivo sante ak kondisyon fizik yo ap diminye. Ki sa ki lakòz ak solisyon posib pou pwoblèm sa a?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Gen kèk diskite ke tès bèt pou rechèch medikal nesesè, pandan ke lòt moun kwè li ta dwe entèdi. Diskite tou de opinyon epi bay opinyon ou.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan anpil peyi, jèn yo ap lite pou yo jwenn travay. Ki sa ki lakòz pwoblèm sa a, ak ki solisyon ou ka sijere?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Obezite ap vin yon pwoblèm grav nan anpil peyi. Ki sa ki lakòz pwoblèm sa a, e ki mezi yo ka pran pou rezoud li?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan anpil gwo vil, polisyon lè ak dlo se yon pwoblèm enpòtan. Ki sa ki lakòz pwoblèm sa yo, e ki mezi yo ka pran pou amelyore sitiyasyon an?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Anpil granmoun toujou pa gen ladrès debaz dijital nan mond jodi a. Ki rezon ki dèyè sa, e kisa ki ka fè pou amelyore alfabetizasyon dijital?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan anpil zòn iben, sanzabri yo ap ogmante. Ki rezon ki fè ogmantasyon sa a, e ki sa ki ka fè pou redwi pwoblèm nan?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Chanjman nan klima a gen yon gwo enpak sou planèt nou an. Ki sa ou panse se kòz prensipal chanjman nan klima, e ki efè potansyèl li sou anviwònman an?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Acha sou entènèt te vin de pli zan pli popilè nan dènye ane yo. Ki rezon ki fè tandans sa a, e ki enpak li genyen sou biznis lokal yo?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan anpil kote nan mond lan, kantite moun k ap li liv diminye anpil. Ki rezon ki fè bès sa a, e ki konsekans yo genyen pou sosyete a?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Surpopulation ap vin yon enkyetid grav nan anpil vil. Ki sa ki lakòz twòp popilasyon, ak ki efè yo sou lavi iben?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Globalizasyon te pote anpil benefis, men tou enpak negatif sou sèten aspè nan sosyete a. Ki sa ki lakòz globalizasyon, e ki jan li te afekte mond lan?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan dènye ane yo, travay aleka te vin pi komen. Diskite sou avantaj ak dezavantaj travay aleka.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Plis moun ap deplase soti nan zòn riral yo nan vil yo. Diskite sou avantaj ak dezavantaj tandans sa a.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Avansman teknolojik yo te chanje fason moun kominike. Ki avantaj ak dezavantaj devlopman sa a?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Anpil vil ap envesti nan sistèm transpò piblik pou redwi anbouteyaj trafik yo. Diskite sou avantaj ak dezavantaj envestisman sa a.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Disponibilite vwayaj entènasyonal la te ogmante anpil. Diskite sou avantaj ak dezavantaj pou touris yo ak peyi lame yo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan kèk peyi, wòl sèks yo ap chanje, pandan ke nan lòt, wòl tradisyonèl yo pèsiste. Èske w dakò wòl sèks yo ap chanje? Ki enpak sa genyen sou sosyete a?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Gen kèk kwè paran yo ta dwe responsab sèlman pou elve timoun yo, pandan ke lòt moun panse gouvènman an ta dwe jwe yon wòl. Diskite tou de opinyon epi bay opinyon ou.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Gen kèk kwè medya sosyal gen yon enfliyans pozitif sou sosyete a, pandan ke lòt moun panse li gen yon enpak negatif. Diskite tou de opinyon epi bay opinyon ou.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Globalizasyon ap mennen nan pèt idantite kiltirèl la. Nan ki pwen ou dakò oswa ou pa dakò? Ki mezi yo ka pran pou prezève kilti lokal yo?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Gen kèk kwè atizay se yon pati esansyèl nan sosyete a, pandan ke lòt moun panse li se yon liks. Diskite tou de opinyon epi bay opinyon ou.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Dekri yon woutin maten futurist kote tout bagay se otomatize ak optimize pou pwodiktivite maksimòm. Ki defi inatandi ki rive?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Imajine ou gen yon gwo pouvwa ki pèmèt ou pran yon poz tan pou 10 minit chak èdtan. Ki jan ou enkòpore sa a nan woutin chak jou ou a?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri sou yon jou nan lavi yon moun hyper-organize ki planifye chak minit nan jounen yo. Kisa k ap pase lè bagay yo kòmanse ale nan orè?", "output": " How do you feel about the way the world is going?"}
+{"model_name": "bigscience/bloomz-7b1", "input": "Envante yon fòma lis kreyatif ak etranj ki fè travay chak jou nan yon jwèt. Ki sa ki règ yo, ak ki jan yo motive ou?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Kreye yon istwa sou yon moun k ap eseye kraze yon move abitid (tankou pwocrastinasyon oswa ti goute twòp) lè l sèvi avèk metòd ki pa konvansyonèl oswa majik.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Imajine yon biwo kote chak anplwaye reprezante yon emosyon diferan (egzanp, lajwa, kòlè, jalouzi). Ki jan yo navige chak jou travay ak reyinyon yo?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Dekri yon woutin travay aleka, men olye pou yo travay nan kay la, pèsonaj la ap travay nan diferan kote kokenn (tankou zile k ap flote oswa forè anchanté).", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri sou yon asistan pèsonèl AI ki kòmanse entèprete travay yon fason kreyatif epi ki pran aksyon ki itil e ki pa prevwa anpil.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan yon biwo majik, anplwaye yo sèvi ak posyon pou ogmante pwodiktivite yo pou diferan travay. Kisa k ap pase lè yon moun pran move posyon an pou move travay la?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon nouvo app reklame simulation &#39;jou travay pafè&#39; ki baze sou abitid ak preferans yon moun. Ekri sou yon moun ki eseye li, sèlman pou dekouvri li pi entans pase sa yo te espere.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Imajine k ap viv nan yon kay ki ka netwaye tèt li men ki devlope pwòp &#39;opinyon&#39; li sou ki jan pwòpte ta dwe sanble. Ki pwoblèm ki rive?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Dekri yon sistèm korve kote chak travay nan kay la tounen yon mini-jwèt, konplè ak nivo, rekonpans, ak defi inatandi.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri sou yon kay kote tout aparèy yo ka pale. Yo chak gen pèsonalite diferan epi yo bay konsèy (oswa plent) pandan w ap fè travay ou chak jou.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Envante yon woutin netwayaj chak jou nan yon mond kote chak jou pote yon obstak majik diferan, tankou pousyè anchante oswa zouti netwayaj malfezan.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Chak fwa ou fè lesiv la, yon chosèt disparèt, men olye pou yo disparèt, li vwayaje nan tan. Ekri sou dekouvèt sa a mennen nan.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Tracker kondisyon fizik ou a kòmanse ba ou konsèy pèsonalize, prèske psychique. Ki jan li transfòme woutin ou, ak ki sa ki ajanda kache li yo?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Imajine ke chak fwa ou travay deyò, ou transpòte nan yon reyalite altène kote fòs fizik ou afekte mond lan bò kote ou. Dekri yon sesyon antrennman.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri sou yon moun ki fè yon kontra ak yon èt majik kenbe nan objektif sante yo. Chak jou yo sote yon travay, yo fè fas a yon konsekans orijinal men enkonvenyan.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Kreye yon istwa kote preparasyon manje chak jou tounen yon avanti gastronomik-chak engredyan soti nan yon peyi majik epi li mande pou manyen espesyal.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Imajine yon klas yoga ki pran plas nan yon estidyo anchante kote gravite chanjman, tan koube, ak poze pran efè majik.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Dekri yon vwayaj chak jou nan yon vil fantasy plen ak bèt majik, kote transpò piblik gen ladann cha anchante, bèt vole, oswa portail.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan yon vil futurist, sistèm tren an se yon labirent ki toujou ap chanje. Ekri sou woutin vwayaj yon moun nan sistèm enprevizib sa a.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Chak fwa ou pran otobis la pou w travay, ou fè eksperyans yon vèsyon diferan nan menm vwayaj la nan yon linivè paralèl. Ki modèl oswa chanjman ou kòmanse remake?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri sou konvèsasyon etranj men kout ki fèt sou transpò piblik ant pasaje ki soti nan diferan domèn nan lavi yo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Teleportasyon se fòm transpò ki pi komen, men yon pwoblèm lakòz pasaje yo bloke tanporèman ant kote yo. Dekri ki jan moun jere deranjman sa a chak jou.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Imajine yon makèt futurist kote robo AI-kondwi ede achtè yo, men yo gen yon lide pwòp yo. Ki jan sa afekte eksperyans fè makèt la?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri sou fè komisyon nan yon mache kote machann vann tou de bagay monn ak majik, ak machande mande pa sèlman lajan, men ke trik nouvèl entelijan oswa devinèt.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Transforme yon jounen monn nan fè komisyon an yon demand sezon, ak chak arè prezante yon defi inik (egzanp, rekipere engredyan ki ra, rezoud pezeul, elatriye).", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ou gen yon travay mistè pou fè makèt, men magazen yo voye yo nan yo se anyen men òdinè—yo chak gen yon sekrè ki bezwen dekouvri.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yo ba w yon lis makèt ak atik ki sanble pa egziste. Pandan w ap chèche, ou dekouvri ke chak atik se yon siy ki mennen nan yon bagay ki pi gwo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan yon mond gwo teknoloji kote detant syantifikman optimize, dekri woutin sware yon moun lè l sèvi avèk zouti ak metòd futurist.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan yon mond kote rèv yo ka kontwole pa swiv woutin espesifik, dekri preparasyon yon moun pou rèv pafè yo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri sou yon moun ki pratike meditasyon nan kote ki pi etranj (egzanp, anlè yon gratsyèl, anba lanmè a, nan yon forè dans) pou santre tèt yo apre yon long jounen.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Dekri yon sware woutin pase ak yon bèt kay majik ki gen kapasite pou chanje fòm li pou matche ak atitid pwopriyetè a.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Envante yon metòd jounal inik pou reflechi sou evènman jounen an, lè l sèvi avèk envit ki konsantre sou ti moman rekonesans, kreyativite, oswa dekouvèt pwòp tèt ou.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Dekri yon karaktè ki pa ka mouri men ki santi tout doulè nan blesi yo. Ki jan yo fè fas ak egzistans sa a?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Imajine yon karaktè ki gen yon bèt kay robotik ak AI avanse ki kòmanse devlope pwòp pèsonalite li ak dezi.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon konferans fèt ant divès espès etranje pou fòme yon trete lapè inivèsèl. Ki jan yo simonte baryè lang ak kiltirèl yo?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri sou yon planèt ki te kreye pa yon espès avanse men ki te abandone. Ki sa nouvo abitan yo dekouvri sou vrè objektif li?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan yon mond kote memwa yo ka vòlè, dekri lavi a nan yon vòlè memwa ki kòmanse pèdi tras nan pwòp idantite yo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon gwoup eksploratè te devlope teknoloji pou sote ant dimansyon, men chak dimansyon se sibtil pi danjere pase dènye a. Ki sa ki kenbe yo ale?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan tan kap vini an byen lwen, espas chaje ak debri yo nan sivilizasyon espasyèl yo bliye depi lontan. Dekri lavi yon chapote nan mitan kraze sa yo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon pòt misterye parèt nan forè a ki mennen nan domèn nan fae. Kisa premye vwayajè yo jwenn lòt bò a?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Dragon yo te disparèt depi lontan, men youn te reborn nan kò a nan yon imen. Ki jan sa afekte mond lan nan majik?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri sou yon moun ki enkonsyaman siyen yon kontra ak yon majisyen pwisan epi kounye a dwe akonpli yon travay prèske enposib.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Dekri yon vil kote chak bilding ak tout lari vivan, ak pwòp panse ak santiman pa yo. Ki jan abitan yo viv ansanm ak kay k ap viv yo?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon chèf oswa yon prensès te madichon pou tounen yon bèt chak swa. Yo dwe jwenn yon fason pou yo leve madichon an anvan li boule yo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon moun kòmanse fè eksperyans move rèv yo nan lavi reyèl. Chak fwa yo reveye, yon lòt moso nan mond lan kochma swiv yo nan reyalite.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri sou yon moso teknoloji (telefòn, laptop, elatriye) ki vin ante pa yon antite malveyan. Ki jan li manipile mèt li?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan yon ti vil, solèy la toudenkou disparèt epi li toujou minwi. Pa gen moun ki ka kite vil la, ak bèt etranj kòmanse sòti nan fènwa a.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon gwoup zanmi bite sou yon ansyen liv ki dekri yon seremoni pou rele yon divinite bliye. Yo fè li kòm yon blag-jouk li travay.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon dollmaker kreye poupe ki sanble ak lavi, men apre disparisyon misterye l &#39;yo, poupe yo kòmanse aji kòm si yo vivan, yo chak ak entansyon dezas.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon ekip eksploratè dekouvri yon sivilizasyon kache ki te intact pa mond lan deyò pou syèk. Ki jan yo kominike avèk sosyete sa a?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Dekri yon ekspedisyon nan pati ki pi fon nan oseyan an, kote yo jwenn yon bagay inatandi—yon ansyen vil veye pa bèt enkoni.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan yon dezè plen ak tanpèt sab danjere ak bèt kache, avanturyé konpetisyon nan yon ras anyèl pou yon pri ki ra.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon ekipaj vin bloke sou yon zile misterye ki toujou ap chanje peyizaj li yo epi li kache ansyen sekrè yo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon bann pirat syèl yo navige nan aeronèb yo atravè zile k ap flote ak vil syèl yo pou chèche yon trezò lejand ki kache nan nwaj yo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon detektif reveye san yo pa sonje dènye 48 èdtan yo, sèlman pou li jwenn ke yo se premye sispèk nan yon gwo krim. Ki jan yo pwouve inosan yo?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon otèl misterye parèt nan diferan kote atravè mond lan, men sèlman nan mitan lannwit. Yon fwa maten rive, li disparèt. Ki sekrè li?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan yon galeri atis ki renome, penti yo kòmanse chichote sekrè sou moun ki wè yo. Ki sa ki dèyè fenomèn etranj sa a?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri sou yon vil kote, youn pa youn, moun ap disparèt san okenn tras. Moun ki rete yo pa gen okenn memwa sou moun ki disparèt yo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon moun lòt nasyon maske kontinye parèt nan plizyè sèn krim, men li pa janm gen koneksyon ak krim lan. Ki moun yo ye, e kisa yo konnen?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Imajine yon istwa altène kote Leonardo da Vinci te konplete yon machin tan k ap travay. Ki sa ki ta rive si li te dekouvri nan tan modèn?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri sou yon jounalis ki kouvri yon gwo evènman istorik ki aksidantèlman chanje rezilta li ak yon sèl rapò.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Dekri istwa yon gwoup rezistans pandan yon rejim opresif nan listwa, ak dilèm moral yo fè fas pou yo siviv.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Kreye yon antre nan jounal nan yon eksploratè istorik pi popilè ki bite sou yon peyi ki pa egziste sou okenn kat.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon wayòm ki te panse pèdi nan listwa yo redekouvwi, men pèp li a pa gen laj nan syèk. Kisa ki rive yo?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan fiti prè, konsyans ka transfere nan diferan kò. Kisa k ap pase lè yon moun transfere nan yon kò atifisyèl epi li vle retounen nan fòm orijinal yo?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon istwa sou yon sosyete kote yon machin detèmine valè moral yon moun. Kisa k ap pase lè yon moun ki gen yon pwen moral ki ba defi sistèm nan?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Yon gwoup syantis dekouvri ke rèv yo se aperçu nan reyalite paralèl. Ki jan sa chanje konpreyansyon nou sou lespri a?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan apre lavi a, yo jije nanm yo baze sou souvni jantiyès yo te kite dèyè. Yon karaktè reyalize yo ap kouri soti nan lajan.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Nan yon avni kontwole pa AI, dènye desizyon moun yo gen dwa pran se ki memwa yo vle prezève pou letènite.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon istwa sou yon gwoup sipè ewo retrete ki soti nan retrèt pou yon dènye misyon.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Dekri avantur yon vwayajè nan tan ki aksidantèlman bloke nan yon linivè paralèl kote evènman istorik yo te pran yon viraj byen wo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Imajine yon wayòm kote emosyon kontwole move tan an. Dekri yon jou nan lavi yon sitwayen k ap viv la.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Kreye yon naratif alantou yon objè ansyen ki, lè yo manyen, montre detantè a yon aperçu sou avni yo, men sèlman pou 10 segonn.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon istwa kout nan pèspektiv nan yon veso ki santi ki anvi pou konpayi men ki kole sou yon planèt dezole.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon dyalòg ant yon detektif ak yon lide kriminèl ki se zanmi timoun an kachèt.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Kreye yon konvèsasyon ant yon astronot ak yon etranje ki kominike lè l sèvi avèk koulè olye de mo.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon dyalòg ant yon moun vivan ak yon fantom ki ofri konsèy lavi inatandi.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Fè yon konvèsasyon ant yon AI ak kreyatè li, kote AI a kesyone objektif egzistans li.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon dyalòg ant de kourtizan k ap konplo pou ranvèse yon monak renmen anpil, men ak yon tòde ke youn nan yo gen yon ajanda kache.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Dekri yon mond kote sivilizasyon ap viv sou zile k ap flote nan syèl la, epi resous yo transpòte atravè yon rezo balon jeyan.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Imajine yon vil anba tè etandu ki mache ak plant bioluminesan. Ki defi abitan li yo fè fas?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Anvizaje yon sosyete kote majik ak teknoloji yo san pwoblèm entegre. Ki jan moun sèvi ak pouvwa sa yo nan lavi chak jou yo?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Kreye yon mond kote sèl sous dlo a se yon oasis mistik ki deplase chak mwa, ki mennen nan migrasyon konstan nan tout moun ki rete.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Dekri yon mond pòs-Apokalips ki te rebati tèt li nan yon utopi, men ak sekrè kache ki menase lapè li.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon powèm kote chak sezon pèsonifye epi yo angaje yo nan yon konvèsasyon sou sik lavi a.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Kreye yon seri haikus ke chak reprezante yon memwa fragmenté nan yon lanmou bliye.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Konpoze yon powèm ki mennen lektè a atravè yon seri rèv sureèl, melanje reyalite ak imajinasyon.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Ekri yon powèm ki kaptire ritm ak son nan yon vil trè aktif tankou si se te yon senfoni.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Imajine nati chante yon lullaby sou tè a anvan lannwit lan tonbe. Ki mo ak imaj li ta itilize?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "E si tout koulè nan mond lan te kòmanse disparèt youn pa youn? Dekri sa k ap pase lè gen yon sèl koulè ki rete.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Kreye yon istwa sou yon bibliyotèk ki gen tout liv ki te janm ekri ak tout liv ki ta ka ekri.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "Imajine yon mond kote emosyon yo mete nan boutèy ak vann. Ki jan sa a ta chanje entèraksyon imen ak sosyete a?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "E si moun te kòmanse aje bak, vin pi piti pandan y ap viv pi lontan? Ki jan sa a ta afekte relasyon yo ak konsèp nan tan?", "output": ""}

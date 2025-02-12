@@ -1,0 +1,149 @@
+{"model_name": "bigscience/bloomz-7b1", "input": "지구의 중력이 몇 시간 동안 갑자기 역전되는 하루를 설명하세요. 사람과 동물은 어떤 반응을 보일까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "본래 영웅이었지만 비극적인 오해로 인해 악당이 된 캐릭터를 만들어보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "자신이 사라진 세상에서 살아가는 마지막 존재인 캐릭터에 대해 써보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "그림자가 살아나 장난치는 캐릭터를 만들어 보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "2주 전에 있었던 면접에 대한 후속 이메일을 작성하세요. 해당 직책에 대한 지속적인 관심을 표명하고, 면접관에게 시간을 내주셔서 감사하다고 말하고, 업데이트를 요청하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "프로젝트 진행 상황을 논의하기 위해 동료와 회의 일정을 잡아야 합니다. 회의에 적합한 시간을 요청하는 정중한 이메일을 작성하고 간략한 개요를 제공하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "최근에 제출한 보고서에 대한 피드백을 요청하는 이메일을 상사에게 쓰세요. 업무 개선에 대한 관심을 표명하고 구체적인 제안을 요청하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "관리자에게 프로젝트 마감일을 놓친 것에 대해 사과하는 이메일을 작성하세요. 지연 이유를 설명하고, 다시는 그런 일이 일어나지 않도록 조치를 설명하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "잘못된 제품이나 손상된 제품을 배송한 공급업체에 이메일을 쓰세요. 문제를 정중하게 설명하고, 세부 정보를 제공하고, 환불이나 교체를 요청하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "회사의 고객 서비스 부서에 이메일을 보내서 해당 서비스에 대한 나쁜 경험을 해결하세요. 문제를 설명하고 어떻게 해결하고 싶은지 제안하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "온라인으로 구매한 제품에 대한 반품 또는 교환을 요청하는 이메일을 작성하세요. 주문 번호와 반품 사유를 포함하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "한동안 연락하지 않은 친구에게 이메일을 쓰세요. 당신의 삶에서 무슨 일이 일어났는지 그들에게 알리고 그들이 어떻게 지내는지 물어보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "가족이나 친구가 준 선물에 대한 감사 이메일을 쓰세요. 선물을 감사하게 생각하는 이유와 그것을 어떻게 사용할 계획인지 구체적으로 적으세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "당신이 주최하는 파티에 친구들을 초대하는 비공식 이메일을 작성하세요. 날짜, 시간, 장소 및 특별 활동에 대한 세부 정보를 포함하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "친구나 동료의 최근 업적을 축하하는 이메일을 쓰세요. 그들을 위해 행복을 표현하고 격려의 말을 전하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "가까운 친구나 가족에게 흥미로운 소식을 공유하는 이메일을 쓰세요. 그들에게 자세한 내용과 그것에 대해 어떻게 생각하는지 말해주세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "대학 입학 사무실에 이메일을 써서 특정 프로그램에 대한 정보를 요청하세요. 지원 절차, 마감일 등에 대해 물어보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "전임 교수에게 추천서를 써 달라고 요청하는 이메일을 작성합니다. 직위에 대한 세부 정보를 제공하고 추가 정보를 제공하겠다고 제안합니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "귀하에게 우려되는 지역 문제를 다루는 정부 관리에게 공식적인 이메일을 작성하십시오. 우려 사항을 말하고, 뒷받침하는 사실을 제공하고, 가능한 해결책을 제안하십시오.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "방금 새 직장을 시작했고 팀원들에게 자신을 소개하고 싶습니다. 자신을 소개하고 함께 일하는 것에 대한 기쁨을 표현하는 공식적인 이메일을 작성하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "이전 고용주에게 이메일을 작성하여 새로운 직장 지원에 대한 참고인으로 사용 요청합니다. 정중하게 허락을 구하고 지원에 감사를 표합니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "잠재 고객에게 회사를 소개하고 서비스를 제공하는 콜드 이메일을 작성하세요. 핵심 강점을 강조하고 그들의 사업을 어떻게 도울 수 있는지 설명하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "새로운 제품 출시를 알리는 마케팅 이메일을 작성합니다. 제품의 기능, 이점, 특별 프로모션 또는 할인에 대한 세부 정보를 포함합니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "귀하의 제품에 관심을 표명한 잠재 고객에게 후속 이메일을 작성하세요. 그들에게 이점을 상기시키고 질문에 답변하겠다고 제안하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "회사 뉴스레터의 새로운 구독자를 확인하는 이메일을 작성하세요. 구독에 감사드리고, 무엇을 기대해야 할지 알려주고, 행동 촉구를 포함하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "기존 고객에게 이전 구매에 따라 관심이 있을 수 있는 관련 제품을 제공하는 영업 이메일을 작성합니다. 이러한 제품이 구매를 보완하는 이유를 강조합니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "교수님에게 과제 연장을 요청하는 이메일을 쓰세요. 상황을 설명하고 언제 과제를 완료할 수 있는지에 대한 합리적인 타임라인을 제공하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "그룹 프로젝트를 조정하는 반 친구들에게 이메일을 작성하세요. 과제를 할당하고, 마감일을 정하고, 진행 상황을 논의하기 위한 회의 시간을 제안하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "잠재적인 연구 기회에 대해 교수에게 이메일을 쓰세요. 관심사를 강조하고 왜 그들과 함께 일하고 싶은지 설명하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "예상치 못한 상황으로 인해 수업을 놓친 것에 대해 교수님에게 이메일을 보내 사과하세요. 따라잡아야 할 자료가 있는지 물어보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "전직 교수나 멘토에게 이메일을 작성하여 진로에 대한 조언을 요청합니다. 현재 상황을 간략하게 설명하고 앞으로 나아가는 방법에 대한 지침을 요청합니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "어떤 사람들은 온라인 학습이 전통적인 학습보다 더 효과적이라고 믿는 반면, 다른 사람들은 교실 학습이 여전히 중요하다고 주장합니다. 두 가지 견해를 논의하고 의견을 제시하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "어떤 사람들은 환경 문제는 전 세계적으로 해결해야 한다고 믿는 반면, 다른 사람들은 지역적으로 해결해야 한다고 생각합니다. 두 가지 견해를 모두 논의하고 의견을 제시하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "일부 사람들은 일과 삶의 균형을 이루는 것이 과거보다 오늘날 더 어렵다고 믿습니다. 이 진술에 얼마나 동의하거나 동의하지 않습니까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "많은 국가에서 사람들의 평균 체중은 증가하고 있는 반면 건강과 체력 수준은 감소하고 있습니다. 이 문제의 원인과 가능한 해결책은 무엇입니까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "어떤 사람들은 의학 연구를 위한 동물 실험이 필요하다고 주장하는 반면, 다른 사람들은 금지되어야 한다고 믿습니다. 두 가지 견해를 논의하고 의견을 제시하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "많은 나라에서 젊은이들은 일자리를 찾는 데 어려움을 겪습니다. 이 문제의 원인은 무엇이며, 어떤 해결책을 제안할 수 있습니까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "비만은 많은 국가에서 심각한 문제가 되고 있습니다. 이 문제의 원인은 무엇이며, 이를 해결하기 위해 어떤 조치를 취할 수 있을까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "많은 대도시에서 대기 및 수질 오염은 심각한 문제입니다. 이러한 문제의 원인은 무엇이며 상황을 개선하기 위해 어떤 조치를 취할 수 있습니까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "오늘날에도 많은 성인들이 기본적인 디지털 기술을 갖추지 못하고 있습니다. 그 이유는 무엇이며, 디지털 리터러시를 개선하기 위해 무엇을 할 수 있을까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "많은 도시 지역에서 노숙자가 증가하고 있습니다. 이러한 증가의 이유는 무엇이며, 문제를 줄이기 위해 무엇을 할 수 있습니까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "기후 변화는 우리 지구에 상당한 영향을 미치고 있습니다. 기후 변화의 주요 원인은 무엇이라고 생각하십니까? 그리고 환경에 미치는 잠재적 영향은 무엇입니까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "최근 몇 년 동안 온라인 쇼핑이 점점 더 인기를 얻고 있습니다. 이러한 추세의 이유는 무엇이며, 지역 기업에 어떤 영향을 미칩니까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "세계 여러 지역에서 책을 읽는 사람의 수가 크게 감소했습니다. 이러한 감소의 이유는 무엇이며, 사회에 미치는 결과는 무엇입니까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "인구 과잉은 많은 도시에서 심각한 문제가 되고 있습니다. 인구 과잉의 원인은 무엇이며 도시 생활에 미치는 영향은 무엇입니까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "세계화는 많은 이점을 가져왔지만, 사회의 특정 측면에 부정적인 영향도 미쳤습니다. 세계화의 원인은 무엇이며, 세계에 어떤 영향을 미쳤습니까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "최근 몇 년 동안 원격 근무가 더 일반화되었습니다. 원격 근무의 장단점을 논의하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "더 많은 사람들이 시골에서 도시로 이주하고 있습니다. 이러한 추세의 장단점을 논의하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "기술의 발전으로 사람들이 소통하는 방식이 바뀌었습니다. 이러한 발전의 장단점은 무엇일까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "많은 도시가 교통 체증을 줄이기 위해 대중교통 시스템에 투자하고 있습니다. 이 투자의 장단점을 논의하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "국제 여행의 가용성이 상당히 증가했습니다. 관광객과 호스트 국가의 장단점을 논의하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "어떤 나라에서는 성 역할이 변화하고 있지만, 다른 나라에서는 전통적인 역할이 지속되고 있습니다. 성 역할이 변화하고 있다는 데 동의하십니까? 이것이 사회에 어떤 영향을 미치고 있습니까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "어떤 사람들은 부모가 전적으로 자녀 양육에 책임을 져야 한다고 믿는 반면, 다른 사람들은 정부가 역할을 해야 한다고 생각합니다. 두 가지 견해를 논의하고 의견을 제시하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "어떤 사람들은 소셜 미디어가 사회에 긍정적인 영향을 미친다고 믿는 반면, 다른 사람들은 그것이 부정적인 영향을 미친다고 생각합니다. 두 가지 견해를 논의하고 의견을 제시하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "세계화는 문화적 정체성의 상실로 이어지고 있습니다. 당신은 얼마나 동의하거나 동의하지 않습니까? 지역 문화를 보존하기 위해 어떤 조치를 취할 수 있습니까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "어떤 사람들은 예술이 사회의 필수적인 부분이라고 믿는 반면, 다른 사람들은 예술이 사치품이라고 생각합니다. 두 가지 견해를 논의하고 의견을 제시하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "모든 것이 자동화되고 생산성을 극대화하기 위해 최적화된 미래형 아침 루틴을 설명하세요. 예상치 못한 과제는 무엇인가요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "매 시간 10분씩 시간을 멈출 수 있는 초능력이 있다고 상상해보세요. 일상에 어떻게 통합할 수 있을까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "하루의 모든 순간을 계획하는 매우 조직적인 사람의 일상에 대해 쓰세요. 일정이 어긋나기 시작하면 무슨 일이 일어날까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "매일의 집안일을 게임으로 바꿔주는 창의적이고 특이한 할 일 목록 형식을 만들어 보세요. 규칙은 무엇이고, 어떻게 당신에게 동기를 부여할까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "평범하고 나쁜 습관(예: 미루기 또는 과도한 간식 먹기)을 색다르거나 마법 같은 방법을 사용하여 끊으려고 노력하는 사람에 대한 이야기를 만들어 보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "모든 직원이 다른 감정(예: 기쁨, 분노, 질투)을 나타내는 사무실을 상상해보세요. 그들은 어떻게 일상 업무와 회의를 헤쳐나갈까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "원격 근무 일상을 설명해 보세요. 하지만 집에서 일하는 대신 캐릭터가 다른 환상적인 장소(예: 떠다니는 섬이나 마법의 숲)에서 일하고 있습니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "창의적으로 업무를 해석하고, 도움이 되지만 매우 예측 불가능한 행동을 취하는 AI 개인 비서에 대해 써보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "마법의 사무실에서 직원들은 물약을 사용해 다양한 업무의 생산성을 높입니다. 누군가가 잘못된 업무에 잘못된 물약을 복용하면 무슨 일이 일어날까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "새로운 앱은 개인의 습관과 선호도에 따라 &#39;완벽한 근무일&#39;을 시뮬레이션한다고 주장합니다. 이를 시도해 본 후 예상보다 훨씬 더 강렬하다는 것을 발견한 사람에 대해 쓰세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "스스로 청소할 수 있지만 청결함이 어떤 모습이어야 하는지에 대한 &#39;의견&#39;을 스스로 개발하는 집에서 사는 것을 상상해보세요. 어떤 문제가 발생할까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "모든 집안일이 미니 게임으로 바뀌어 레벨, 보상, 예상치 못한 도전이 제공되는 집안일 시스템을 설명해 주세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "매일 마법의 먼지나 장난스러운 청소 도구 등, 다양한 마법의 장애물이 등장하는 세상에서 일상적인 청소 루틴을 만들어보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "세탁을 할 때마다 양말이 하나 없어지지만, 사라지는 대신 시간을 여행합니다. 이로 인해 발견되는 내용에 대해 쓰세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "당신의 피트니스 트래커는 개인화된, 거의 초능력적인 조언을 제공하기 시작합니다. 그것은 어떻게 당신의 일상을 변화시키고, 그것의 숨겨진 의도는 무엇일까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "당신이 운동할 때마다 당신의 신체적 힘이 주변 세계에 영향을 미치는 대체 현실로 이동한다고 상상해보세요. 운동 세션 하나를 설명하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "건강 목표를 고수하기 위해 마법의 존재와 거래를 하는 사람에 대해 쓰세요. 매일 일을 하나 건너뛸 때마다 그들은 기발하지만 불편한 결과에 직면하게 됩니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "매일의 식사 준비가 요리 모험으로 바뀌는 스토리를 만들어 보세요. 각 재료는 마법의 땅에서 왔으며 특별한 취급이 필요합니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "중력이 변하고, 시간이 휘고, 자세가 마법같은 효과를 내는 마법의 스튜디오에서 진행되는 요가 수업을 상상해보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "마법의 마차, 날아다니는 생물, 차원문 등이 대중교통에 포함되어 있는, 마법의 생물로 가득 찬 판타지 도시에서의 일상적인 출퇴근을 설명해 보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "미래 도시에서 지하철 시스템은 끊임없이 변화하는 미로입니다. 이 예측 불가능한 시스템을 통한 누군가의 일상적인 출퇴근에 대해 쓰세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "버스를 타고 출근할 때마다 평행 우주에서 같은 출퇴근의 다른 버전을 경험하게 됩니다. 어떤 패턴이나 변화를 눈치채기 시작했나요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "매우 다양한 삶을 살아가는 승객들이 대중교통에서 나누는 특이하지만 짧은 대화에 대해 적어보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "순간이동은 가장 흔한 교통수단이지만, 결함으로 인해 통근객이 일시적으로 장소 사이에 갇히게 됩니다. 사람들이 이 일상적인 불편함을 어떻게 처리하는지 설명하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "AI 구동 로봇이 쇼핑객을 돕는 미래형 식료품점을 상상해 보세요. 하지만 로봇은 스스로의 생각을 가지고 있습니다. 이것이 쇼핑 경험에 어떤 영향을 미칠까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "상인들이 일상적인 물건과 마법의 물건을 모두 판매하는 시장에서 심부름을 하는 것에 대해 쓰세요. 흥정에는 돈뿐만 아니라 영리한 속임수나 수수께끼도 필요합니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "일상적인 심부름을 하는 하루를 장대한 퀘스트로 바꿔보세요. 각 퀘스트마다 고유한 도전 과제가 주어집니다(예: 희귀한 재료 찾기, 퍼즐 풀기 등).", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "당신은 미스터리 쇼핑 임무를 맡게 되었지만, 당신이 파견되는 매장들은 평범함과는 거리가 멀었습니다. 각 매장에는 밝혀야 할 비밀이 있었습니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "존재하지 않는 품목이 있는 식료품 목록이 주어집니다. 검색하면서 각 품목이 훨씬 더 큰 무언가로 이어지는 단서임을 알게 됩니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "휴식이 과학적으로 최적화된 하이테크 세계에서, 미래 지향적인 도구와 방법을 사용하여 사람의 매일 밤 휴식 루틴을 설명하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "특정한 일상 생활을 통해 꿈을 조종할 수 있는 세상에서, 사람이 완벽한 꿈을 꾸기 위해 준비하는 과정을 설명하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "긴 하루를 보낸 후 마음을 가다듬기 위해 낯선 장소(예: 고층 빌딩 꼭대기, 바다 속, 울창한 숲 속)에서 명상을 수행하는 사람에 대해 글을 써보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "주인의 기분에 따라 모습을 바꿀 수 있는 마법의 애완동물과 함께 보낸 평범한 저녁을 설명하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "하루의 사건을 되돌아보는 독특한 일기 쓰기 방법을 만들어 보세요. 감사함, 창의성, 자기 발견의 작은 순간에 초점을 맞춘 주제를 활용하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "죽을 수 없지만 부상으로 인한 고통을 온전히 느끼는 캐릭터를 설명하세요. 그들은 이 존재에 어떻게 대처하나요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "진보된 AI를 탑재한 로봇 애완동물을 데리고 다니며, 그 애완동물이 스스로의 성격과 욕망을 키워가는 모습을 상상해 보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "다양한 외계종족들 사이에서 세계 평화 조약을 체결하기 위한 회의가 열립니다. 그들은 어떻게 언어와 문화적 장벽을 극복할까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "진보된 종에 의해 엔지니어링되었지만 버려진 행성에 대해 쓰세요. 새로운 주민들은 그 행성의 진정한 목적에 대해 무엇을 발견합니까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "기억이 도난당할 수 있는 세상에서, 자신의 정체성을 잃어가는 기억 도둑의 삶을 묘사해 보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "탐험가 그룹은 차원을 넘나드는 기술을 개발했지만, 각 차원은 이전 차원보다 미묘하게 더 위험합니다. 무엇이 그들을 계속 가게 하는 걸까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "먼 미래에, 우주는 오래 전에 잊혀진 우주 항해 문명의 잔해로 뒤덮여 있습니다. 이 폐허들 사이에서 청소부의 삶을 묘사해 보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "숲에 요정의 영역으로 이어지는 신비한 문이 나타납니다. 첫 번째 여행자들은 반대편에서 무엇을 발견할까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "드래곤은 오래 전에 멸종되었지만, 한 마리가 인간의 몸으로 다시 태어났습니다. 이것이 마법의 세계에 어떤 영향을 미칠까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "자신도 모르게 강력한 마법사와 계약을 맺고 거의 불가능한 임무를 완수해야 하는 사람에 대해 써보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "모든 건물과 거리가 살아 있고, 각자의 생각과 감정이 있는 도시를 묘사해 보세요. 주민들은 살아있는 집과 어떻게 공존할까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "왕자나 공주는 매일 밤 짐승으로 변하는 저주를 받았습니다. 그들은 저주가 그들을 삼키기 전에 저주를 해제할 방법을 찾아야 합니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "사람은 현실에서 악몽을 경험하기 시작합니다. 매번 깨어날 때마다 악몽 세계의 또 다른 부분이 현실로 따라옵니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "악의적인 존재에 의해 괴롭힘을 받는 기술(전화, 노트북 등)에 대해 쓰세요. 어떻게 소유자를 조종합니까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "작은 마을에서 태양이 갑자기 사라지고 항상 자정입니다. 아무도 마을을 떠날 수 없고, 어둠 속에서 이상한 생물들이 나타나기 시작합니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "친구 그룹은 잊혀진 신을 소환하는 의식을 설명하는 오래된 책을 우연히 발견합니다. 그들은 그것을 농담으로 수행하지만 효과가 있을 때까지 수행합니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "인형 제작자는 살아있는 것 같은 인형을 만들지만, 그가 신비하게 사라진 후 인형들은 마치 살아있는 것처럼 행동하기 시작했고, 각 인형은 사악한 의도를 품고 있습니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "탐험가 팀은 수세기 동안 외부 세계의 손길이 닿지 않은 숨겨진 문명을 발견합니다. 그들은 이 사회와 어떻게 상호 작용할까요?", "output": " 더 확실한 답이 없는 현재 여부에 대해 보고 싶다."}
+{"model_name": "bigscience/bloomz-7b1", "input": "바다의 가장 깊은 곳으로 탐험을 떠나는 이야기를 들려주세요. 그곳에서 탐험대는 예상치 못한 것을 발견합니다. 알려지지 않은 생물이 지키는 고대 도시입니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "위험한 모래 폭풍과 숨겨진 생물로 가득한 사막에서 모험가들은 희귀한 상품을 놓고 매년 경쟁을 벌입니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "하늘 해적단이 비행선을 타고 떠다니는 섬과 하늘 도시를 누비며 구름 속에 숨겨진 전설적인 보물을 찾아 나선다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "한 형사가 지난 48시간 동안의 기억을 잃은 채 깨어났는데, 그들이 주요 범죄의 주요 용의자라는 사실을 알게 됩니다. 그들은 어떻게 자신의 무죄를 증명할까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "호텔은 신비롭게 전 세계 여러 곳에 나타나지만, 밤에만 나타난다. 아침이 되면 사라진다. 그 비밀은 무엇일까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "유명한 미술관에서, 그림들은 그것을 보는 사람들에 대한 비밀을 속삭이기 시작합니다. 이 이상한 현상 뒤에는 무엇이 있을까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "사람들이 하나하나 흔적도 없이 사라지는 마을에 대해 쓰세요. 남은 사람들은 실종자에 대한 기억이 없습니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "가면을 쓴 낯선 사람이 다양한 범죄 현장에 계속 나타나지만 범죄와 관련이 없는 듯합니다. 그들은 누구이고 무엇을 알고 있을까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "레오나르도 다빈치가 작동하는 타임머신을 완성한 대체 역사를 상상해 보세요. 현대에 발견된다면 무슨 일이 일어날까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "중요한 역사적 사건을 취재하던 기자가 단 한 번의 보도로 우연히 사건의 결과를 바꾸어버린 이야기를 써보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "역사 속 압제적인 정권 하에서 저항 집단이 겪은 이야기와 그들이 살아남기 위해 직면한 도덕적 딜레마를 설명합니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "지도에 존재하지 않는 땅을 우연히 발견한 유명한 역사 탐험가의 일기를 작성해 보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "역사 속에서 사라졌다고 생각했던 왕국이 재발견되었지만, 그 사람들은 수세기 동안 나이를 먹지 않았습니다. 그들에게 무슨 일이 일어났을까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "가까운 미래에 의식은 다른 신체로 옮겨질 수 있다. 누군가가 인공 신체로 옮겨가서 원래 모습으로 돌아가고 싶어하면 무슨 일이 일어날까?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "기계가 사람의 도덕적 가치를 결정하는 사회에 대한 이야기를 쓰세요. 도덕 점수가 낮은 사람이 시스템에 도전하면 무슨 일이 일어날까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "과학자 그룹은 꿈이 평행 현실을 엿보는 것이라는 사실을 발견했습니다. 이것이 우리의 마음에 대한 이해를 어떻게 바꾸나요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "사후세계에서 영혼은 그들이 남긴 친절의 기억에 따라 판단을 받습니다. 한 캐릭터는 화폐가 바닥나고 있다는 것을 깨닫습니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "AI가 통제하는 미래에서 인간이 내릴 수 있는 마지막 결정은 어떤 기억을 영원히 보존할 것인가입니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "마지막 임무를 위해 은퇴에서 복귀한 은퇴한 슈퍼히어로 그룹에 대한 이야기를 써보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "우연히 역사적 사건이 완전히 다른 방향으로 흘러간 평행 우주에 갇힌 시간 여행자의 모험을 설명합니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "감정이 날씨를 조종하는 왕국을 상상해보세요. 그곳에 사는 시민의 하루를 묘사해보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "동반자를 갈구하지만 사람이 살지 않는 행성에 갇힌 지각 있는 우주선의 관점에서 짧은 이야기를 써보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "어린 시절부터 친구였던 형사와 범죄의 수장 사이의 대화를 써보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "단어 대신 색상을 사용하여 소통하는 우주인과 외계인 간의 대화를 만들어 보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "살아 있는 사람과 예상치 못한 인생 조언을 해주는 유령 사이의 대화를 써보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "AI와 그 창조자 간의 대화를 만들어내세요. 그 대화에서 AI는 자신의 존재 목적에 대해 의문을 제기합니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "사랑하는 군주를 전복하려고 음모를 꾸미는 두 신하 사이의 대화를 쓰세요. 하지만 두 사람 중 한 명이 숨겨진 의도를 가지고 있다는 반전이 있습니다.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "문명이 하늘에 떠 있는 섬에 살고, 자원이 거대한 풍선 네트워크를 통해 운송되는 세계를 묘사해 보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "생물발광 식물로 가동되는 광활한 지하 도시를 상상해보세요. 주민들은 어떤 어려움에 직면할까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "마법과 기술이 완벽하게 통합된 사회를 상상해보세요. 사람들은 일상생활에서 이런 힘을 어떻게 사용할까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "매달 물이 이동하는 신비로운 오아시스만이 물의 유일한 공급원이 되는 세상을 만들어 모든 주민이 끊임없이 이동하게 하세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "평화를 위협하는 숨겨진 비밀을 안고 있지만, 유토피아로 재건된 멸망 이후의 세계를 묘사해 보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "각 계절을 의인화하여 시를 쓰고 삶의 순환에 대한 대화를 나눠보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "잊혀진 사랑에 대한 단편적인 기억을 나타내는 일련의 하이쿠를 만들어 보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "현실과 상상을 혼합하여 일련의 초현실적인 꿈의 풍경을 독자에게 보여주는 시를 지어보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "마치 교향곡처럼 분주한 도시의 리듬과 소리를 포착한 시를 써보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "밤이 오기 전에 자연이 지구에 자장가를 부르는 것을 상상해보세요. 어떤 단어와 이미지를 사용할까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "세상의 모든 색깔이 하나하나 사라지기 시작하면 어떨까요? 색깔이 하나만 남았을 때 무슨 일이 일어나는지 설명해 보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "지금까지 쓰여진 모든 책과 쓰여질 수 있는 모든 책이 보관된 도서관에 대한 이야기를 만들어보세요.", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "감정이 병에 담겨 판매되는 세상을 상상해보세요. 이것이 인간의 상호작용과 사회를 어떻게 바꿀까요?", "output": ""}
+{"model_name": "bigscience/bloomz-7b1", "input": "사람들이 나이를 거꾸로 먹고, 더 오래 살면서 젊어진다면 어떨까요? 이것이 그들의 관계와 시간 개념에 어떤 영향을 미칠까요?", "output": ""}

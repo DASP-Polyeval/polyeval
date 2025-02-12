@@ -31,10 +31,10 @@ class Output(db.Model):
         return f"<Output {self.benchmark} - {self.model} - {self.language}>"
 
 TASK_BENCHMARK_MAP = {
-    "classification": ["SIB-200"],
+    "classification": ["SIB-200","Taxi-1500"],
     "translation": ["Flores-200"],
     "summarization": ["XLSum"],
-    "generation": ["Aya"]
+    "generation": ["Aya","PolyWrite"]
 }
 
 # Initialize the database
@@ -134,7 +134,7 @@ def get_options():
         task_types_query = task_types_query.filter_by(model=selected_model)
     if selected_language:
         task_types_query = task_types_query.filter_by(language=selected_language)
-    task_types = [row.task_type for row in task_types_query.distinct()]
+    task_types = list({row.task_type for row in task_types_query})
 
     # dynamically query benchmark
     benchmarks_query = Output.query
@@ -144,7 +144,7 @@ def get_options():
         benchmarks_query = benchmarks_query.filter_by(model=selected_model)
     if selected_language:
         benchmarks_query = benchmarks_query.filter_by(language=selected_language)
-    benchmarks = [row.benchmark for row in benchmarks_query.distinct()]
+    benchmarks = list({row.benchmark for row in benchmarks_query})
 
     # dynamically query model
     models_query = Output.query
@@ -154,7 +154,7 @@ def get_options():
         models_query = models_query.filter_by(benchmark=selected_benchmark)
     if selected_language:
         models_query = models_query.filter_by(language=selected_language)
-    models = [row.model for row in models_query.distinct()]
+    models =  list({row.model for row in models_query})
 
     # dynamically query language
     languages_query = Output.query
@@ -306,8 +306,8 @@ def translation():
         print(f"non-en text: {non_english}")
 
         if detected_lang not in SUPPORTED_LANGUAGES:
-            print(f"GoogleTranslate does not support the language {SUPPORTED_LANGUAGES}")
-            return jsonify({"error": "GoogleTranslate does not support the language"}), 400
+            print(f"GoogleTranslate support the language {SUPPORTED_LANGUAGES}")
+            return jsonify({"error": "Google Translate does not support this language."}), 400
 
         # Perform translation using Google Translate
         translated_text = []

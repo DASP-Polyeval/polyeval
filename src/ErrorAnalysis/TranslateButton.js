@@ -29,7 +29,11 @@ export default function TranslateButton({ selectedRow }) {
           setOriginalText(response.data.original_text);
         } catch (error) {
           console.error("Error:", error);
-          alert("Translation failed.");
+          if (error.response) {
+            alert(error.response.data.error); // show error message from server
+          } else {
+            alert("Translation failed.");
+          }
         }
       };
       translateText();

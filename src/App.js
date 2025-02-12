@@ -8,12 +8,14 @@ import {
   Navigate,
 } from "react-router-dom";
 
+import DataVisualisation from "./DataVisualisation/DataVisualisation";
 import ErrorAnalysis from "./ErrorAnalysis/ErrorAnalysis";
 
 import Login from "./Auth/Login";
 import Signup from "./Auth/Signup";
 import ReviewComment from "./ReviewComment/ReviewComment";
 import AnnotationGuidelines from "./HumanRating/AnnotationGuideline";
+import Navbar from "./DataVisualisation/Navbar";
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem("token");
@@ -34,21 +36,7 @@ function App() {
   return (
     <Router>
       <div>
-        <h1 style={{ textAlign: "center" }}>Polyeval</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/analysis">ErrorAnalysis</Link>
-            </li>
-            <li>
-              <Link to="/guide">AnnotationGuidelines </Link>
-            </li>
-          </ul>
-        </nav>
-
+        <Navbar />
         <Routes>
           <Route
             path="/login"
@@ -85,6 +73,7 @@ function App() {
             }
           />
           // task4.1
+          <Route path="/data-visualisation" element={<DataVisualisation />} />
           <Route path="/analysis/*" element={<ErrorAnalysis />} />
           <Route path="/guide/*" element={<AnnotationGuidelines />} />
         </Routes>
