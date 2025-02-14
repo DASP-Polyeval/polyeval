@@ -11,21 +11,30 @@ import {
   Paper,
   CircularProgress,
   Button,
-  Stack
+  Stack,
+  IconButton
 } from "@mui/material";
 import { BarChart } from '@mui/x-charts/BarChart';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
+import { Download as DownloadIcon } from '@mui/icons-material';
 import { getFilename } from './FileName';
 import { saveAs } from 'file-saver';
 import html2canvas from 'html2canvas';
 
-const TextClassification = ({ externalTabValue, filters }) => {
+const TextClassification = ({ 
+  externalTabValue, 
+  filters, 
+  showCsvTable = false  
+}) => {
   const [csvData, setCsvData] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
   const [languagePage, setLanguagePage] = React.useState(0);
   const [groupPage, setGroupPage] = React.useState(0);
   const [resourceGroups, setResourceGroups] = React.useState(null);
+
+  // Ref for chart container
+  const chartContainerRef = React.useRef(null);
 
   // Effect to fetch resource groups
   React.useEffect(() => {
@@ -590,11 +599,66 @@ const TextClassification = ({ externalTabValue, filters }) => {
       >
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
           <Typography variant="h6">
-            {filters.filterValue} Performance - {currentGroup == "unseen" ? "UNSEEN" : currentGroup.replace('-', ' ').toUpperCase() + " Resource"}
+            {filters.filterValue} Performance - {currentGroup === "unseen" ? "UNSEEN" : currentGroup.replace('-', ' ').toUpperCase() + " Resource"}
           </Typography>
         </Box>
         
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ 
+          position: 'relative', 
+          flex: 1 
+        }} ref={chartContainerRef}>
+          {/* Download Icon */}
+          <IconButton
+            onClick={() => {
+              try {
+                // Find the chart container more robustly
+                const chartContainer = document.querySelector('.MuiChartsXAxis-root')?.closest('.MuiBox-root') || 
+                                       chartContainerRef.current;
+
+                if (!chartContainer) {
+                  console.error('Chart container not found', {
+                    chartContainerRef: chartContainerRef.current,
+                    documentQuerySelector: document.querySelector('.MuiChartsXAxis-root')
+                  });
+                  alert('Failed to find graph container. Please try again.');
+                  return;
+                }
+
+                // Capture the chart
+                html2canvas(chartContainer, {
+                  scale: 3, // Increase resolution
+                  useCORS: true, // Handle cross-origin images
+                  logging: true, // Enable logging for debugging
+                  allowTaint: true, // Allow drawing images from different origins
+                  backgroundColor: '#ffffff' // Ensure white background
+                }).then(canvas => {
+                  canvas.toBlob(function(blob) {
+                    // Determine filename based on current view
+                    const filename = filters.filterType === 'model' 
+                      ? `${filters.filterValue}_${currentGroup}_performance_graph.png`
+                      : `${filters.filterValue}_performance_graph.png`;
+                    
+                    saveAs(blob, filename);
+                  });
+                }).catch(error => {
+                  console.error('html2canvas Error:', error);
+                  alert(`Failed to download graph: ${error.message}`);
+                });
+              } catch (error) {
+                console.error('Download Capture Error:', error);
+                alert(`Failed to download graph: ${error.message}`);
+              }
+            }}
+            sx={{
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              zIndex: 10
+            }}
+          >
+            <DownloadIcon />
+          </IconButton>
+
           <BarChart
             dataset={currentGroupData}
             series={[
@@ -656,6 +720,23 @@ const TextClassification = ({ externalTabValue, filters }) => {
               }
             }}
           />
+        </Box>
+
+        {/* Resource Group Legend */}
+        <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center', gap: 3 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Box sx={{ 
+              width: 16, 
+              height: 16, 
+              backgroundColor: RESOURCE_GROUP_COLORS[currentGroup] || '#1976d2', 
+              mr: 1 
+            }} />
+            <Typography variant="caption">
+              {currentGroup === "unseen" 
+                ? "UNSEEN" 
+                : currentGroup.replace('-', ' ').toUpperCase() + " Resource Group"}
+            </Typography>
+          </Box>
         </Box>
 
         {/* Pagination Controls for Resource Groups */}
