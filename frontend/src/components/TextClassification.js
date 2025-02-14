@@ -283,6 +283,11 @@ const TextClassification = ({
       (languagePage + 1) * languagesPerPage
     );
 
+    // Generate color for each model
+    const generateColor = (index, total) => {
+      return `hsl(${index * 360 / total}, 70%, 50%)`;
+    };
+
     const chartData = {
       xAxis: [
         {
@@ -297,7 +302,7 @@ const TextClassification = ({
           return !isNaN(value) ? value : 0;
         }),
         label: rowData[Object.keys(rowData)[0]], // Use first column (likely model name) as label
-        color: `hsl(${index * 360 / csvData.length}, 70%, 50%)`, // Unique color for each model
+        color: generateColor(index, csvData.length), // Unique color for each model
       })) : []
     };
 
@@ -343,81 +348,252 @@ const TextClassification = ({
           Model Performance for Selected Languages
         </Typography>
         
-        <Box sx={{ flex: 1 }}>
-          <BarChart
-            {...chartData}
-            height={450}
-            margin={{ left: 80, right: 50, top: 20, bottom: 100 }}
-            xAxis={[
-              {
-                ...chartData.xAxis[0],
-                label: 'Languages',
-                labelStyle: {
-                  fontSize: 14,
-                  marginTop: 150,
-                },
-                tickLabelStyle: {
-                  angle: -15,
-                  textAnchor: 'end',
-                  fontSize: 10,
-                },
-              }
-            ]}
-            yAxis={[
-              {
-                label: 'Performance',
-                labelStyle: {
-                  fontSize: 14,
-                  marginLeft: 50,
-                },
-                tickLabelStyle: {
-                  fontSize: 12,
-                },
-              }
-            ]}
-            slotProps={{
-              legend: {
-                hidden: true,
-              },
-            }}
-            tooltip={{
-              trigger: 'item',
-            }}
-            barWidth={50}
-            barGap={0.2}
-          />
-        </Box>
+        <Box sx={{ flex: 1, position: 'relative' }}>
+          <Box sx={{ 
+            position: 'relative', 
+            flex: 1 
+          }} ref={chartContainerRef}>
+            {/* Download Icon */}
+            <IconButton
+              onClick={() => {
+                try {
+                  // Extensive logging for debugging
+                  console.log('Download initiated', {
+                    chartContainerRef: chartContainerRef.current,
+                    csvData: csvData,
+                    filters: filters
+                  });
 
-        {/* Pagination Controls */}
-        <Box 
-          sx={{ 
-            display: 'flex', 
-            justifyContent: 'center', 
-            alignItems: 'center', 
-            mt: 2 
-          }}
-        >
-          <Stack direction="row" spacing={2}>
-            <Button
-              variant="outlined"
-              startIcon={<ChevronLeft />}
-              onClick={() => setLanguagePage(Math.max(0, languagePage - 1))}
-              disabled={languagePage === 0}
+                  // Validate chart container reference
+                  if (!chartContainerRef.current) {
+                    console.error('Chart container ref is null');
+                    alert('Cannot find chart container. Please try again.');
+                    return;
+                  }
+
+                  // Create a temporary container for capturing
+                  const tempContainer = document.createElement('div');
+                  tempContainer.style.display = 'flex';
+                  tempContainer.style.flexDirection = 'column';
+                  tempContainer.style.alignItems = 'center';
+                  tempContainer.style.backgroundColor = 'white';
+                  tempContainer.style.padding = '20px';
+                  tempContainer.style.width = '100%';
+                  tempContainer.style.maxWidth = '800px';
+                  tempContainer.style.margin = '0 auto';
+
+                  // Clone the entire chart container
+                  const chartClone = chartContainerRef.current.cloneNode(true);
+                  
+                  // Remove download icon
+                  const iconButtons = chartClone.querySelectorAll('button');
+                  iconButtons.forEach(button => button.remove());
+
+                  // Create legend container
+                  const legendContainer = document.createElement('div');
+                  legendContainer.style.display = 'flex';
+                  legendContainer.style.justifyContent = 'center';
+                  legendContainer.style.alignItems = 'center';
+                  legendContainer.style.gap = '16px';
+                  legendContainer.style.marginTop = '20px';
+                  legendContainer.style.flexWrap = 'wrap';
+
+                  // Validate csvData
+                  if (!csvData || csvData.length === 0) {
+                    console.error('No data available for legend');
+                    alert('No data available to create legend.');
+                    return;
+                  }
+
+                  // Generate legend items
+                  csvData.forEach((rowData, index) => {
+                    // Defensive check for model name
+                    const modelName = rowData[Object.keys(rowData)[0]] || `Model ${index + 1}`;
+                    const color = `hsl(${index * 360 / csvData.length}, 70%, 50%)`;
+
+                    const legendItem = document.createElement('div');
+                    legendItem.style.display = 'flex';
+                    legendItem.style.alignItems = 'center';
+                    legendItem.style.gap = '8px';
+                    legendItem.style.margin = '0 10px';
+
+                    const colorBox = document.createElement('div');
+                    colorBox.style.width = '16px';
+                    colorBox.style.height = '16px';
+                    colorBox.style.backgroundColor = color;
+
+                    const modelText = document.createElement('span');
+                    modelText.textContent = modelName;
+                    modelText.style.fontSize = '14px';
+
+                    legendItem.appendChild(colorBox);
+                    legendItem.appendChild(modelText);
+                    legendContainer.appendChild(legendItem);
+                  });
+
+                  // Add chart and legend to temp container
+                  tempContainer.appendChild(chartClone);
+                  tempContainer.appendChild(legendContainer);
+
+                  // Ensure the container is in the document for html2canvas
+                  document.body.appendChild(tempContainer);
+
+                  // Capture the entire container
+                  html2canvas(tempContainer, {
+                    scale: 3, // Increase resolution
+                    useCORS: true, // Handle cross-origin images
+                    logging: true, // Enable logging for debugging
+                    allowTaint: true, // Allow drawing images from different origins
+                    backgroundColor: '#ffffff' // Ensure white background
+                  }).then(canvas => {
+                    // Remove temporary container
+                    document.body.removeChild(tempContainer);
+
+                    canvas.toBlob(function(blob) {
+                      // Determine filename based on current view
+                      const filename = filters.filterType === 'model' 
+                        ? `${filters.filterValue}_${currentLanguages.join('_')}_performance_graph.png`
+                        : `${filters.filterValue}_performance_graph.png`;
+                      
+                      saveAs(blob, filename);
+                    });
+                  }).catch(error => {
+                    // Remove temporary container in case of error
+                    if (tempContainer.parentNode) {
+                      document.body.removeChild(tempContainer);
+                    }
+                    console.error('html2canvas Error:', error);
+                    alert(`Failed to download graph: ${error.message}`);
+                  });
+                } catch (error) {
+                  console.error('Download Capture Error:', error);
+                  alert(`Failed to download graph: ${error.message}`);
+                }
+              }}
+              sx={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                zIndex: 10
+              }}
             >
-              Previous
-            </Button>
-            <Typography variant="body2">
-              Page {languagePage + 1} of {totalPages}
-            </Typography>
-            <Button
-              variant="outlined"
-              endIcon={<ChevronRight />}
-              onClick={() => setLanguagePage(Math.min(totalPages - 1, languagePage + 1))}
-              disabled={languagePage === totalPages - 1}
-            >
-              Next
-            </Button>
-          </Stack>
+              <DownloadIcon />
+            </IconButton>
+
+            <BarChart
+              {...chartData}
+              height={450}
+              margin={{ left: 80, right: 50, top: 20, bottom: 100 }}
+              xAxis={[
+                {
+                  ...chartData.xAxis[0],
+                  label: 'Languages',
+                  labelStyle: {
+                    fontSize: 14,
+                    marginTop: 150,
+                  },
+                  tickLabelStyle: {
+                    angle: -15,
+                    textAnchor: 'end',
+                    fontSize: 10,
+                  },
+                }
+              ]}
+              yAxis={[
+                {
+                  label: 'Performance',
+                  labelStyle: {
+                    fontSize: 14,
+                    marginLeft: 50,
+                  },
+                  tickLabelStyle: {
+                    fontSize: 12,
+                  },
+                }
+              ]}
+              slotProps={{
+                legend: {
+                  hidden: true, // Hide the built-in legend
+                },
+              }}
+              tooltip={{
+                trigger: 'item',
+              }}
+              barWidth={50}
+              barGap={0.2}
+            />
+          </Box>
+
+          {/* Model Legend */}
+          <Box 
+            sx={{ 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center', 
+              gap: 2,
+              mt: 2,
+              flexWrap: 'wrap'
+            }}
+          >
+            {csvData.map((rowData, index) => {
+              const modelName = rowData[Object.keys(rowData)[0]];
+              const color = generateColor(index, csvData.length);
+              
+              return (
+                <Box 
+                  key={modelName} 
+                  sx={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: 1 
+                  }}
+                >
+                  <Box 
+                    sx={{ 
+                      width: 16, 
+                      height: 16, 
+                      backgroundColor: color 
+                    }} 
+                  />
+                  <Typography variant="body2">
+                    {modelName}
+                  </Typography>
+                </Box>
+              );
+            })}
+          </Box>
+
+          {/* Pagination Controls */}
+          <Box 
+            sx={{ 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center', 
+              mt: 2 
+            }}
+          >
+            <Stack direction="row" spacing={2}>
+              <Button
+                variant="outlined"
+                startIcon={<ChevronLeft />}
+                onClick={() => setLanguagePage(Math.max(0, languagePage - 1))}
+                disabled={languagePage === 0}
+              >
+                Previous
+              </Button>
+              <Typography variant="body2">
+                Page {languagePage + 1} of {totalPages}
+              </Typography>
+              <Button
+                variant="outlined"
+                endIcon={<ChevronRight />}
+                onClick={() => setLanguagePage(Math.min(totalPages - 1, languagePage + 1))}
+                disabled={languagePage === totalPages - 1}
+              >
+                Next
+              </Button>
+            </Stack>
+          </Box>
         </Box>
       </Box>
     );
@@ -611,27 +787,98 @@ const TextClassification = ({
           <IconButton
             onClick={() => {
               try {
-                // Find the chart container more robustly
-                const chartContainer = document.querySelector('.MuiChartsXAxis-root')?.closest('.MuiBox-root') || 
-                                       chartContainerRef.current;
+                // Extensive logging for debugging
+                console.log('Download initiated', {
+                  chartContainerRef: chartContainerRef.current,
+                  csvData: csvData,
+                  filters: filters
+                });
 
-                if (!chartContainer) {
-                  console.error('Chart container not found', {
-                    chartContainerRef: chartContainerRef.current,
-                    documentQuerySelector: document.querySelector('.MuiChartsXAxis-root')
-                  });
-                  alert('Failed to find graph container. Please try again.');
+                // Validate chart container reference
+                if (!chartContainerRef.current) {
+                  console.error('Chart container ref is null');
+                  alert('Cannot find chart container. Please try again.');
                   return;
                 }
 
-                // Capture the chart
-                html2canvas(chartContainer, {
+                // Create a temporary container for capturing
+                const tempContainer = document.createElement('div');
+                tempContainer.style.display = 'flex';
+                tempContainer.style.flexDirection = 'column';
+                tempContainer.style.alignItems = 'center';
+                tempContainer.style.backgroundColor = 'white';
+                tempContainer.style.padding = '20px';
+                tempContainer.style.width = '100%';
+                tempContainer.style.maxWidth = '800px';
+                tempContainer.style.margin = '0 auto';
+
+                // Clone the entire chart container
+                const chartClone = chartContainerRef.current.cloneNode(true);
+                
+                // Remove download icon
+                const iconButtons = chartClone.querySelectorAll('button');
+                iconButtons.forEach(button => button.remove());
+
+                // Create legend container
+                const legendContainer = document.createElement('div');
+                legendContainer.style.display = 'flex';
+                legendContainer.style.justifyContent = 'center';
+                legendContainer.style.alignItems = 'center';
+                legendContainer.style.gap = '16px';
+                legendContainer.style.marginTop = '20px';
+                legendContainer.style.flexWrap = 'wrap';
+
+                // Validate csvData
+                if (!csvData || csvData.length === 0) {
+                  console.error('No data available for legend');
+                  alert('No data available to create legend.');
+                  return;
+                }
+
+                // Generate legend items
+                csvData.forEach((rowData, index) => {
+                  // Defensive check for model name
+                  const modelName = rowData[Object.keys(rowData)[0]] || `Model ${index + 1}`;
+                  const color = `hsl(${index * 360 / csvData.length}, 70%, 50%)`;
+
+                  const legendItem = document.createElement('div');
+                  legendItem.style.display = 'flex';
+                  legendItem.style.alignItems = 'center';
+                  legendItem.style.gap = '8px';
+                  legendItem.style.margin = '0 10px';
+
+                  const colorBox = document.createElement('div');
+                  colorBox.style.width = '16px';
+                  colorBox.style.height = '16px';
+                  colorBox.style.backgroundColor = color;
+
+                  const modelText = document.createElement('span');
+                  modelText.textContent = modelName;
+                  modelText.style.fontSize = '14px';
+
+                  legendItem.appendChild(colorBox);
+                  legendItem.appendChild(modelText);
+                  legendContainer.appendChild(legendItem);
+                });
+
+                // Add chart and legend to temp container
+                tempContainer.appendChild(chartClone);
+                tempContainer.appendChild(legendContainer);
+
+                // Ensure the container is in the document for html2canvas
+                document.body.appendChild(tempContainer);
+
+                // Capture the entire container
+                html2canvas(tempContainer, {
                   scale: 3, // Increase resolution
                   useCORS: true, // Handle cross-origin images
                   logging: true, // Enable logging for debugging
                   allowTaint: true, // Allow drawing images from different origins
                   backgroundColor: '#ffffff' // Ensure white background
                 }).then(canvas => {
+                  // Remove temporary container
+                  document.body.removeChild(tempContainer);
+
                   canvas.toBlob(function(blob) {
                     // Determine filename based on current view
                     const filename = filters.filterType === 'model' 
@@ -641,6 +888,10 @@ const TextClassification = ({
                     saveAs(blob, filename);
                   });
                 }).catch(error => {
+                  // Remove temporary container in case of error
+                  if (tempContainer.parentNode) {
+                    document.body.removeChild(tempContainer);
+                  }
                   console.error('html2canvas Error:', error);
                   alert(`Failed to download graph: ${error.message}`);
                 });
