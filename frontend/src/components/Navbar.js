@@ -17,8 +17,8 @@ const Navbar = () => {
           <Button color="inherit" component={Link} to="/data-visualisation">
             Data Visualisation
           </Button>
-          <Button color="inherit" component={Link} to="/secondary-data-visualisation">
-            Secondary Data Visualisation
+          <Button color="inherit" component={Link} to="/analytics">
+            Analytics
           </Button>
           <Button color="inherit" component={Link} to="/error-analysis">
             Error Analysis

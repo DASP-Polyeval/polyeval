@@ -10,11 +10,6 @@ import {
   MenuItem,
   Button,
   Typography,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
   Table,
   TableBody,
   TableCell,
@@ -31,28 +26,27 @@ const steps = [
   "Select Language",
 ];
 
-const SecondaryDataVisualisationSidebar = ({ onComplete, selectedTab, taskOptions }) => {
+const AnalyticsSidebar = ({ 
+  onComplete, 
+  selectedTab, 
+  taskOptions,
+  onMetricsUpdate 
+}) => {
   const [activeStep, setActiveStep] = useState(0);
   const [dataset, setDataset] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
-  
-  // Updated language selection state
   const [selectedResourceGroup, setSelectedResourceGroup] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("");
-  
   const [models, setModels] = useState([]);
   const [availableResourceGroups, setAvailableResourceGroups] = useState({});
   const [availableLanguages, setAvailableLanguages] = useState([]);
   const [wizardComplete, setWizardComplete] = useState(false);
-  
-  // New state for metric calculation
   const [metrics, setMetrics] = useState(null);
-  const [isMetricsDialogOpen, setIsMetricsDialogOpen] = useState(false);
 
-  // Get dataset options from taskOptions based on selected tab
+  // Simplified dataset options
   const datasetOptions = taskOptions[selectedTab]?.dataset || [];
 
-  // Reset activeStep when tab changes
+  // Reset wizard when tab changes
   useEffect(() => {
     setActiveStep(0);
     setDataset("");
@@ -251,44 +245,55 @@ const SecondaryDataVisualisationSidebar = ({ onComplete, selectedTab, taskOption
         ? (2 * precision * recall) / (precision + recall)
         : 0;
 
+      // Calculate accuracy: proportion of correctly matched entries
+      const accuracy = processedLines > 0
+        ? matchedEntries.length / processedLines
+        : 0;
+
       // Sort and select top entries
       const topSimilarities = similarityResults
         .sort((a, b) => b.similarity - a.similarity)
         .slice(0, 5);
 
       // Set metrics state
-      setMetrics({
+      const calculatedMetrics = {
         precision: precision.toFixed(2),
         recall: recall.toFixed(2),
         f1Score: f1Score.toFixed(2),
+        accuracy: accuracy.toFixed(2),
         details: {
-          filePath,
           totalLines: lines.length,
           processedLines,
           matchedLines: matchedEntries.length,
           similarityDetails: similarityResults.slice(0, 20),
           topSimilarities
         }
-      });
+      };
 
-      // Open metrics dialog
-      setIsMetricsDialogOpen(true);
+      setMetrics(calculatedMetrics);
+      
+      // Call the metrics update callback if provided
+      if (onMetricsUpdate) {
+        onMetricsUpdate(calculatedMetrics);
+      }
 
     } catch (error) {
       console.error('Comprehensive metrics calculation error:', error);
       
-      // Set error state in metrics
-      setMetrics({
+      const errorMetrics = {
         precision: '0.00',
         recall: '0.00',
         f1Score: '0.00',
+        accuracy: '0.00',
         error: error.message
-      });
+      };
 
-      // Open metrics dialog
-      setIsMetricsDialogOpen(true);
+      setMetrics(errorMetrics);
+      
+      if (onMetricsUpdate) {
+        onMetricsUpdate(errorMetrics);
+      }
 
-      // Optional: show an alert to the user
       alert(`Error calculating metrics: ${error.message}`);
     }
   };
@@ -336,10 +341,6 @@ const SecondaryDataVisualisationSidebar = ({ onComplete, selectedTab, taskOption
 
     // Calculate metrics after completing selection
     calculateMetrics();
-  };
-
-  const handleCloseMetricsDialog = () => {
-    setIsMetricsDialogOpen(false);
   };
 
   const renderStepContent = (step) => {
@@ -479,141 +480,8 @@ const SecondaryDataVisualisationSidebar = ({ onComplete, selectedTab, taskOption
           {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
         </Button>
       </Box>
-
-      {/* Metrics Dialog */}
-      <Dialog
-        open={isMetricsDialogOpen}
-        onClose={handleCloseMetricsDialog}
-        aria-labelledby="metrics-dialog-title"
-        maxWidth="lg"
-        fullWidth
-      >
-        <DialogTitle id="metrics-dialog-title">Evaluation Metrics</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            {metrics ? (
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                {/* Calculated Metrics */}
-                <Box>
-                  <Typography variant="h6">Calculated Metrics</Typography>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Typography>Precision: {metrics.precision}</Typography>
-                    <Typography>Recall: {metrics.recall}</Typography>
-                    <Typography>F1-Score: {metrics.f1Score}</Typography>
-                  </Box>
-                </Box>
-
-                {/* Error Message if Present */}
-                {metrics.error && (
-                  <Typography color="error" variant="body2">
-                    Error: {metrics.error}
-                  </Typography>
-                )}
-
-                {/* Detailed Metrics Information */}
-                {metrics.details && (
-                  <Box>
-                    <Typography variant="h6">Detailed Breakdown</Typography>
-                    <Typography>File Path: {metrics.details.filePath}</Typography>
-                    <Typography>Total Lines: {metrics.details.totalLines}</Typography>
-                    <Typography>Processed Lines: {metrics.details.processedLines}</Typography>
-                    <Typography>Matched Lines: {metrics.details.matchedLines}</Typography>
-                  </Box>
-                )}
-
-                {/* Top 5 Most Similar Entries */}
-                {metrics.details && metrics.details.topSimilarities && (
-                  <Box sx={{ mt: 2 }}>
-                    <Typography variant="h6">Top 5 Most Similar Entries</Typography>
-                    <TableContainer component={Paper}>
-                      <Table size="small">
-                        <TableHead>
-                          <TableRow>
-                            <TableCell>Line</TableCell>
-                            <TableCell>Similarity</TableCell>
-                            <TableCell>Match</TableCell>
-                            <TableCell>Target (Truncated)</TableCell>
-                            <TableCell>Output (Truncated)</TableCell>
-                          </TableRow>
-                        </TableHead>
-                        <TableBody>
-                          {metrics.details.topSimilarities.map((entry, index) => (
-                            <TableRow 
-                              key={index} 
-                              sx={{ 
-                                backgroundColor: entry.isMatch 
-                                  ? 'rgba(0, 255, 0, 0.1)' 
-                                  : 'rgba(255, 0, 0, 0.1)' 
-                              }}
-                            >
-                              <TableCell>{entry.lineNumber}</TableCell>
-                              <TableCell>{(entry.similarity * 100).toFixed(2)}%</TableCell>
-                              <TableCell>{entry.isMatch ? 'Yes' : 'No'}</TableCell>
-                              <TableCell sx={{ maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                                {entry.target.length > 100 
-                                  ? `${entry.target.slice(0, 100)}...` 
-                                  : entry.target}
-                              </TableCell>
-                              <TableCell sx={{ maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                                {entry.output.length > 100 
-                                  ? `${entry.output.slice(0, 100)}...` 
-                                  : entry.output}
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
-                    </TableContainer>
-                  </Box>
-                )}
-
-                {/* Similarity Details */}
-                {metrics.details && metrics.details.similarityDetails && (
-                  <Box sx={{ mt: 2 }}>
-                    <Typography variant="h6">Similarity Details</Typography>
-                    <TableContainer component={Paper} sx={{ maxHeight: 400, overflow: 'auto' }}>
-                      <Table size="small" stickyHeader>
-                        <TableHead>
-                          <TableRow>
-                            <TableCell>Line</TableCell>
-                            <TableCell>Similarity</TableCell>
-                            <TableCell>Match</TableCell>
-                          </TableRow>
-                        </TableHead>
-                        <TableBody>
-                          {metrics.details.similarityDetails.map((entry, index) => (
-                            <TableRow 
-                              key={index} 
-                              sx={{ 
-                                backgroundColor: entry.isMatch 
-                                  ? 'rgba(0, 255, 0, 0.1)' 
-                                  : 'rgba(255, 0, 0, 0.1)' 
-                              }}
-                            >
-                              <TableCell>{entry.lineNumber}</TableCell>
-                              <TableCell>{(entry.similarity * 100).toFixed(2)}%</TableCell>
-                              <TableCell>{entry.isMatch ? 'Yes' : 'No'}</TableCell>
-                            </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
-                    </TableContainer>
-                  </Box>
-                )}
-              </Box>
-            ) : (
-              <Typography>Calculating metrics...</Typography>
-            )}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseMetricsDialog} color="primary">
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
     </Box>
   );
 };
 
-export default SecondaryDataVisualisationSidebar;
+export default AnalyticsSidebar;

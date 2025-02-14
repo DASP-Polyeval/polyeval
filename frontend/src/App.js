@@ -8,7 +8,7 @@ import {
 import Navbar from "./components/Navbar";
 import DataVisualisation from "./components/DataVisualisation";
 import ErrorAnalysis from "./components/ErrorAnalysis";
-import SecondaryDataVisualisation from "./components/SecondaryDataVisualisation";
+import Analytics from "./components/Analytics";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
           element={<Navigate replace to="/data-visualisation" />}
         />
         <Route path="/data-visualisation" element={<DataVisualisation />} />
-        <Route path="/secondary-data-visualisation" element={<SecondaryDataVisualisation />} />
+        <Route path="/analytics" element={<Analytics />} />
         <Route path="/error-analysis" element={<ErrorAnalysis />} />
       </Routes>
     </Router>

@@ -24,6 +24,28 @@ const TextClassification = ({ externalTabValue, filters }) => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
   const [languagePage, setLanguagePage] = React.useState(0);
+  const [groupPage, setGroupPage] = React.useState(0);
+  const [resourceGroups, setResourceGroups] = React.useState(null);
+
+  // Effect to fetch resource groups
+  React.useEffect(() => {
+    fetch("/resource_groups.json")
+      .then(response => response.json())
+      .then(data => {
+        setResourceGroups(data);
+      })
+      .catch(error => {
+        console.error('Error fetching resource groups:', error);
+        // Provide a default resource group mapping if fetch fails
+        setResourceGroups({
+          'high': ['eng_Latn', 'spa_Latn', 'fra_Latn'],
+          'medium-high': ['deu_Latn', 'por_Latn', 'ita_Latn'],
+          'medium': ['nld_Latn', 'rus_Cyrl', 'ara_Arab'],
+          'medium-low': ['tur_Latn', 'zho_Hans', 'jpn_Jpan'],
+          'low': ['kor_Hang', 'hin_Deva', 'ben_Beng']
+        });
+      });
+  }, []);
 
   // Effect to fetch CSV data when filters change
   React.useEffect(() => {
@@ -208,7 +230,7 @@ const TextClassification = ({ externalTabValue, filters }) => {
           borderRadius: 2, 
           p: 2,
           width: 'calc(100% - 60px)', 
-          marginLeft: '30px', 
+          marginLeft: '30px' 
         }}
       >
         <Typography variant="body1" align="center" color="textSecondary">
@@ -285,7 +307,7 @@ const TextClassification = ({ externalTabValue, filters }) => {
             borderRadius: 2, 
             p: 2,
             width: 'calc(100% - 60px)', 
-            marginLeft: '30px', 
+            marginLeft: '30px' 
           }}
         >
           <Typography color="error" variant="body1" align="center">
@@ -394,23 +416,164 @@ const TextClassification = ({ externalTabValue, filters }) => {
 
   // Render graph for model selection
   if (filters.filterType === 'model') {
-    // Prepare data for BarChart
-    const chartData = {
-      xAxis: [
-        {
-          id: 'languages',
-          data: csvData.map(item => item.language),
-          scaleType: 'band',
-        }
-      ],
-      series: [
-        {
-          data: csvData.map(item => item.value),
-          label: `${filters.filterValue} Performance`,
-          color: '#1976d2', // Material-UI primary blue
-        }
-      ],
+    // Debug logging
+    console.log('Model Filter Data:', {
+      csvData,
+      resourceGroups,
+      filters
+    });
+
+    // Ensure we have data to work with
+    if (!csvData || csvData.length === 0) {
+      return (
+        <Box 
+          display="flex" 
+          justifyContent="center" 
+          alignItems="center" 
+          height="100%" 
+          minHeight="400px"
+          sx={{ 
+            backgroundColor: '#f8f8f8', 
+            borderRadius: 2, 
+            p: 2,
+            width: 'calc(100% - 60px)', 
+            marginLeft: '30px' 
+          }}
+        >
+          <Typography color="error" variant="body1" align="center">
+            No data available for the selected model. Please check your selection.
+          </Typography>
+        </Box>
+      );
+    }
+
+    // Ensure resource groups are loaded
+    if (!resourceGroups) {
+      return (
+        <Box 
+          display="flex" 
+          justifyContent="center" 
+          alignItems="center" 
+          height="100%" 
+          minHeight="400px"
+          sx={{ 
+            backgroundColor: '#f8f8f8', 
+            borderRadius: 2, 
+            p: 2,
+            width: 'calc(100% - 60px)', 
+            marginLeft: '30px' 
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      );
+    }
+
+    // Define color mapping for resource groups
+    const RESOURCE_GROUP_COLORS = {
+      'high': '#0d47a1',       // Dark blue
+      'medium-high': '#1976d2', // Medium-dark blue
+      'medium': '#2196f3',      // Medium blue
+      'medium-low': '#64b5f6',  // Light blue
+      'low': '#bbdefb'          // Very light blue
     };
+
+    // Define a custom sorting order for resource groups
+    const RESOURCE_GROUP_ORDER = [
+      'high', 
+      'medium-high', 
+      'medium', 
+      'medium-low', 
+      'low', 
+      'unseen'
+    ];
+
+    // Categorize languages by resource group
+    const languagesByGroup = Object.keys(resourceGroups).reduce((acc, group) => {
+      acc[group] = csvData.filter(item => 
+        resourceGroups[group].includes(item.language)
+      );
+      return acc;
+    }, {});
+
+    // Debug logging for language categorization
+    console.log('Languages By Group:', languagesByGroup);
+
+    // Filter out empty groups and sort them according to the predefined order
+    const nonEmptyGroups = Object.keys(languagesByGroup)
+      .filter(group => languagesByGroup[group].length > 0)
+      .sort((a, b) => {
+        const indexA = RESOURCE_GROUP_ORDER.indexOf(a);
+        const indexB = RESOURCE_GROUP_ORDER.indexOf(b);
+        return indexA - indexB;
+      });
+
+    // Debug logging for non-empty groups
+    console.log('Non-Empty Groups:', nonEmptyGroups);
+
+    // Total group pages
+    const totalGroupPages = nonEmptyGroups.length;
+
+    // Ensure groupPage is within bounds
+    const safeGroupPage = Math.min(Math.max(groupPage, 0), totalGroupPages - 1);
+
+    // Handle case when no groups have data
+    if (nonEmptyGroups.length === 0) {
+      return (
+        <Box 
+          display="flex" 
+          justifyContent="center" 
+          alignItems="center" 
+          height="100%" 
+          minHeight="400px"
+          sx={{ 
+            backgroundColor: '#f8f8f8', 
+            borderRadius: 2, 
+            p: 2,
+            width: 'calc(100% - 60px)', 
+            marginLeft: '30px' 
+          }}
+        >
+          <Typography color="error" variant="body1" align="center">
+            No languages found in any resource group for the selected model.
+          </Typography>
+        </Box>
+      );
+    }
+
+    // Get current group
+    const currentGroup = nonEmptyGroups[safeGroupPage];
+    const currentGroupData = languagesByGroup[currentGroup];
+
+    // Debug logging for current group
+    console.log('Current Group:', {
+      group: currentGroup,
+      data: currentGroupData
+    });
+
+    // Ensure current group has data
+    if (!currentGroupData || currentGroupData.length === 0) {
+      return (
+        <Box 
+          display="flex" 
+          justifyContent="center" 
+          alignItems="center" 
+          height="100%" 
+          minHeight="400px"
+          sx={{ 
+            backgroundColor: '#f8f8f8', 
+            borderRadius: 2, 
+            p: 2,
+            width: 'calc(100% - 60px)', 
+            marginLeft: '30px' 
+          }}
+        >
+          <Typography color="error" variant="body1" align="center">
+            No data found for the current resource group.
+          </Typography>
+        </Box>
+      );
+    }
 
     return (
       <Box 
@@ -425,26 +588,38 @@ const TextClassification = ({ externalTabValue, filters }) => {
           flexDirection: 'column'
         }}
       >
-        <Typography variant="h6" gutterBottom>
-          {filters.filterValue} Performance Across Languages
-        </Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+          <Typography variant="h6">
+            {filters.filterValue} Performance - {currentGroup == "unseen" ? "UNSEEN" : currentGroup.replace('-', ' ').toUpperCase() + " Resource"}
+          </Typography>
+        </Box>
         
         <Box sx={{ flex: 1 }}>
           <BarChart
-            {...chartData}
+            dataset={currentGroupData}
+            series={[
+              {
+                dataKey: 'value',
+                label: 'Performance',
+                valueFormatter: (value) => value.toFixed(2),
+              }
+            ]}
+            colors={[RESOURCE_GROUP_COLORS[currentGroup] || '#1976d2']}
             height={400}
             margin={{ left: 80, right: 50, top: 20, bottom: 50 }}
+            barWidth={20}
+            barGap={1}
             xAxis={[
               {
-                ...chartData.xAxis[0],
+                dataKey: 'language',
+                scaleType: 'band',
                 label: 'Languages',
                 labelStyle: {
                   fontSize: 14,
-                  marginTop: 150, // Increased margin to move further down
-                  
+                  marginTop: 150,
                 },
                 tickLabelStyle: {
-                  angle: -15, // Rotate labels to prevent overlap
+                  angle: -15,
                   textAnchor: 'end',
                   fontSize: 10,
                 },
@@ -455,8 +630,7 @@ const TextClassification = ({ externalTabValue, filters }) => {
                 label: 'Performance',
                 labelStyle: {
                   fontSize: 14,
-                  marginLeft: 50, // Increased margin to move further away
-                  
+                  marginLeft: 50,
                 },
                 tickLabelStyle: {
                   fontSize: 12,
@@ -465,13 +639,55 @@ const TextClassification = ({ externalTabValue, filters }) => {
             ]}
             slotProps={{
               legend: {
-                hidden: true,
+                hidden: true
               },
-            }}
-            tooltip={{
-              trigger: 'item',
+              tooltip: {
+                trigger: 'item',
+                formatter: (params) => {
+                  const { dataIndex } = params;
+                  const { language, value } = currentGroupData[dataIndex];
+                  
+                  return `
+                    <b>Language:</b> ${language}<br/>
+                    <b>Performance:</b> ${value.toFixed(2)}<br/>
+                    <b>Resource Group:</b> ${currentGroup}
+                  `;
+                }
+              }
             }}
           />
+        </Box>
+
+        {/* Pagination Controls for Resource Groups */}
+        <Box 
+          sx={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            mt: 2 
+          }}
+        >
+          <Stack direction="row" spacing={2}>
+            <Button
+              variant="outlined"
+              startIcon={<ChevronLeft />}
+              onClick={() => setGroupPage(Math.max(0, groupPage - 1))}
+              disabled={groupPage === 0}
+            >
+              Previous Group
+            </Button>
+            <Typography variant="body2">
+              Group {groupPage + 1} of {totalGroupPages}
+            </Typography>
+            <Button
+              variant="outlined"
+              endIcon={<ChevronRight />}
+              onClick={() => setGroupPage(Math.min(totalGroupPages - 1, groupPage + 1))}
+              disabled={groupPage === totalGroupPages - 1}
+            >
+              Next Group
+            </Button>
+          </Stack>
         </Box>
       </Box>
     );
