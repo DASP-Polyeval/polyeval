@@ -389,28 +389,52 @@ const TextClassification = ({
                   const iconButtons = chartClone.querySelectorAll('button');
                   iconButtons.forEach(button => button.remove());
 
+                  // Find and clone the existing legend
+                  const existingLegend = chartClone.querySelector('.MuiChartsLegend-root');
+                  
+                  // If existing legend found, add it to the container only for non-model filters
+                  if (existingLegend && filters.filterType !== 'model') {
+                    // Ensure legend is visible and styled appropriately
+                    existingLegend.style.display = 'flex';
+                    existingLegend.style.justifyContent = 'center';
+                    existingLegend.style.width = '100%';
+                    existingLegend.style.marginTop = '10px';
+                    
+                    // Remove any absolute positioning that might interfere with capture
+                    existingLegend.style.position = 'static';
+                    
+                    // Add the existing legend to the temp container
+                    tempContainer.appendChild(existingLegend);
+                  }
+
                   // Create legend container
                   const legendContainer = document.createElement('div');
                   legendContainer.style.display = 'flex';
                   legendContainer.style.justifyContent = 'center';
                   legendContainer.style.alignItems = 'center';
                   legendContainer.style.gap = '16px';
-                  legendContainer.style.marginTop = '20px';
+                  legendContainer.style.marginTop = '10px';
                   legendContainer.style.flexWrap = 'wrap';
 
-                  // Validate csvData
-                  if (!csvData || csvData.length === 0) {
-                    console.error('No data available for legend');
-                    alert('No data available to create legend.');
-                    return;
+                  // Determine legend items based on filter type
+                  let legendItems = [];
+                  if (filters.filterType === 'model') {
+                    // Use resource group legend for model filter
+                    legendItems = [
+                      { name: 'HIGH Resource', color: `hsl(0, 70%, 50%)` },     // Red
+                      { name: 'MEDIUM Resource', color: `hsl(120, 70%, 50%)` }, // Green
+                      { name: 'LOW Resource', color: `hsl(240, 70%, 50%)` }     // Blue
+                    ];
+                  } else {
+                    // For other filters, use model names from csvData
+                    legendItems = csvData.map((rowData, index) => ({
+                      name: rowData[Object.keys(rowData)[0]] || `Model ${index + 1}`,
+                      color: `hsl(${index * 360 / csvData.length}, 70%, 50%)`
+                    }));
                   }
 
                   // Generate legend items
-                  csvData.forEach((rowData, index) => {
-                    // Defensive check for model name
-                    const modelName = rowData[Object.keys(rowData)[0]] || `Model ${index + 1}`;
-                    const color = `hsl(${index * 360 / csvData.length}, 70%, 50%)`;
-
+                  legendItems.forEach(item => {
                     const legendItem = document.createElement('div');
                     legendItem.style.display = 'flex';
                     legendItem.style.alignItems = 'center';
@@ -420,10 +444,10 @@ const TextClassification = ({
                     const colorBox = document.createElement('div');
                     colorBox.style.width = '16px';
                     colorBox.style.height = '16px';
-                    colorBox.style.backgroundColor = color;
+                    colorBox.style.backgroundColor = item.color;
 
                     const modelText = document.createElement('span');
-                    modelText.textContent = modelName;
+                    modelText.textContent = item.name;
                     modelText.style.fontSize = '14px';
 
                     legendItem.appendChild(colorBox);
@@ -525,15 +549,14 @@ const TextClassification = ({
           </Box>
 
           {/* Model Legend */}
-          <Box 
-            sx={{ 
-              display: 'flex', 
-              justifyContent: 'center', 
-              alignItems: 'center', 
-              gap: 2,
-              mt: 2,
-              flexWrap: 'wrap'
-            }}
+          <Box sx={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            gap: 2,
+            mt: 1, // Reduced from mt: 2
+            flexWrap: 'wrap'
+          }}
           >
             {csvData.map((rowData, index) => {
               const modelName = rowData[Object.keys(rowData)[0]];
@@ -660,7 +683,8 @@ const TextClassification = ({
       'medium-high': '#1976d2', // Medium-dark blue
       'medium': '#2196f3',      // Medium blue
       'medium-low': '#64b5f6',  // Light blue
-      'low': '#bbdefb'          // Very light blue
+      'low': '#bbdefb',
+      'unseen': '#E3F2FD'          // Very light blue
     };
 
     // Define a custom sorting order for resource groups
@@ -819,28 +843,55 @@ const TextClassification = ({
                 const iconButtons = chartClone.querySelectorAll('button');
                 iconButtons.forEach(button => button.remove());
 
+                // Find and clone the existing legend
+                const existingLegend = chartClone.querySelector('.MuiChartsLegend-root');
+                
+                // If existing legend found, add it to the container only for non-model filters
+                if (existingLegend && filters.filterType !== 'model') {
+                  // Ensure legend is visible and styled appropriately
+                  existingLegend.style.display = 'flex';
+                  existingLegend.style.justifyContent = 'center';
+                  existingLegend.style.width = '100%';
+                  existingLegend.style.marginTop = '10px';
+                  
+                  // Remove any absolute positioning that might interfere with capture
+                  existingLegend.style.position = 'static';
+                  
+                  // Add the existing legend to the temp container
+                  tempContainer.appendChild(existingLegend);
+                }
+
                 // Create legend container
                 const legendContainer = document.createElement('div');
                 legendContainer.style.display = 'flex';
                 legendContainer.style.justifyContent = 'center';
                 legendContainer.style.alignItems = 'center';
                 legendContainer.style.gap = '16px';
-                legendContainer.style.marginTop = '20px';
+                legendContainer.style.marginTop = '10px';
                 legendContainer.style.flexWrap = 'wrap';
 
-                // Validate csvData
-                if (!csvData || csvData.length === 0) {
-                  console.error('No data available for legend');
-                  alert('No data available to create legend.');
-                  return;
+                // Determine legend items based on filter type
+                let legendItems = [];
+                if (filters.filterType === 'model') {
+                  // Use resource group legend for model filter
+                  legendItems = [
+                    { name: 'High', color: RESOURCE_GROUP_COLORS['high']  },    
+                    { name: 'Medium-High', color: RESOURCE_GROUP_COLORS['medium-high']  },
+                    { name: 'Medium', color: RESOURCE_GROUP_COLORS['medium']  },
+                    { name: 'Medium-Low', color: RESOURCE_GROUP_COLORS['medium-low'] }, 
+                    { name: 'Low', color: RESOURCE_GROUP_COLORS['low']  },
+                    { name: 'Unseen', color: RESOURCE_GROUP_COLORS['unseen']  }    
+                  ];
+                } else {
+                  // For other filters, use model names from csvData
+                  legendItems = csvData.map((rowData, index) => ({
+                    name: rowData[Object.keys(rowData)[0]] || `Model ${index + 1}`,
+                    color: `hsl(${index * 360 / csvData.length}, 70%, 50%)`
+                  }));
                 }
 
                 // Generate legend items
-                csvData.forEach((rowData, index) => {
-                  // Defensive check for model name
-                  const modelName = rowData[Object.keys(rowData)[0]] || `Model ${index + 1}`;
-                  const color = `hsl(${index * 360 / csvData.length}, 70%, 50%)`;
-
+                legendItems.forEach(item => {
                   const legendItem = document.createElement('div');
                   legendItem.style.display = 'flex';
                   legendItem.style.alignItems = 'center';
@@ -850,10 +901,10 @@ const TextClassification = ({
                   const colorBox = document.createElement('div');
                   colorBox.style.width = '16px';
                   colorBox.style.height = '16px';
-                  colorBox.style.backgroundColor = color;
+                  colorBox.style.backgroundColor = item.color;
 
                   const modelText = document.createElement('span');
-                  modelText.textContent = modelName;
+                  modelText.textContent = item.name;
                   modelText.style.fontSize = '14px';
 
                   legendItem.appendChild(colorBox);
