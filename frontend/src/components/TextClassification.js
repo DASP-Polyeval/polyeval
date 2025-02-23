@@ -64,16 +64,42 @@ const TextClassification = ({
     setError(null);
     setLanguagePage(0);
 
-    // Debugging: Log entire filters object
-    console.log('Full Filters Object:', filters);
-
     // Check if we have a dataset to fetch
     if (!filters?.dataset) {
       setError("Please select a dataset");
       return;
     }
 
-    // Start loading
+    // If we have uploaded model data and this is a model filter, use that instead of fetching
+    if (filters.uploadedModelData && filters.filterType === 'model' && filters.filterValue) {
+      const modelData = filters.uploadedModelData[filters.filterValue];
+      if (modelData) {
+        // Convert the uploaded model data to the format expected by the visualization
+        const graphData = Object.entries(modelData)
+          .filter(([key]) => key !== 'Model' && key !== 'Avg') // Exclude non-language columns
+          .map(([language, value]) => {
+            const parsedValue = parseFloat(value);
+            return {
+              language,
+              value: isNaN(parsedValue) ? 0 : parsedValue // Ensure we never pass NaN or null
+            };
+          })
+          .filter(item => item.value > 0)
+          .sort((a, b) => b.value - a.value);
+
+        if (graphData.length === 0) {
+          setError(`No performance data found for ${filters.filterValue}`);
+          setIsLoading(false);
+          return;
+        }
+
+        setCsvData(graphData);
+        setIsLoading(false);
+        return;
+      }
+    }
+
+    // If no uploaded data or not a model filter, proceed with normal CSV fetch
     setIsLoading(true);
 
     // Fetch CSV file
@@ -967,7 +993,13 @@ const TextClassification = ({
               {
                 dataKey: 'value',
                 label: 'Performance',
-                valueFormatter: (value) => value.toFixed(2),
+                valueFormatter: (value) => {
+                  // Handle null, undefined, or NaN values
+                  if (value === null || value === undefined || isNaN(value)) {
+                    return '0.00';
+                  }
+                  return value.toFixed(2);
+                },
               }
             ]}
             colors={[RESOURCE_GROUP_COLORS[currentGroup] || '#1976d2']}
@@ -1012,10 +1044,13 @@ const TextClassification = ({
                 formatter: (params) => {
                   const { dataIndex } = params;
                   const { language, value } = currentGroupData[dataIndex];
+                  const formattedValue = value === null || value === undefined || isNaN(value) 
+                    ? '0.00' 
+                    : value.toFixed(2);
                   
                   return `
                     <b>Language:</b> ${language}<br/>
-                    <b>Performance:</b> ${value.toFixed(2)}<br/>
+                    <b>Performance:</b> ${formattedValue}<br/>
                     <b>Resource Group:</b> ${currentGroup}
                   `;
                 }
