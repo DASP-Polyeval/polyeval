@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Stepper,
@@ -26,6 +27,7 @@ const steps = [
 ];
 
 const Sidebar = ({ onComplete, selectedTab, taskOptions }) => {
+  const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
   const [dataset, setDataset] = useState("");
   const [metric, setMetric] = useState("");
@@ -204,24 +206,34 @@ const Sidebar = ({ onComplete, selectedTab, taskOptions }) => {
         );
       case 1:
         return (
-          <FormControl variant="outlined" fullWidth>
-            <InputLabel id="metric-label">Metric</InputLabel>
-            <Select
-              label="Metric"
-              labelId="metric-label"
-              value={metric}
-              onChange={(e) => setMetric(e.target.value)}
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              {metricOptions.map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option}
+          <Box>
+            <FormControl variant="outlined" fullWidth sx={{ mb: 2 }}>
+              <InputLabel id="metric-label">Metric</InputLabel>
+              <Select
+                label="Metric"
+                labelId="metric-label"
+                value={metric}
+                onChange={(e) => setMetric(e.target.value)}
+              >
+                <MenuItem value="">
+                  <em>None</em>
                 </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+                {metricOptions.map((option) => (
+                  <MenuItem key={option} value={option}>
+                    {option}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <Button
+              variant="outlined"
+              color="primary"
+              fullWidth
+              onClick={() => navigate('/custom-evaluator')}
+            >
+              Upload Your Own Metric
+            </Button>
+          </Box>
         );
       case 2:
         return (

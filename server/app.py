@@ -90,32 +90,42 @@ def upload_file():
     if request.method == "OPTIONS":
         return jsonify({"msg": "ok"}), 200
     
-    # Check if both files are present
-    if 'evaluator' not in request.files or 'jsonl_file' not in request.files:
-        return jsonify({"error": "Both evaluator and JSONL files are required"}), 400
+    # Check if required fields are present
+    if 'evaluator' not in request.files:
+        return jsonify({"error": "Evaluator file is required"}), 400
+    
+    if not all(field in request.form for field in ['benchmark', 'model', 'language']):
+        return jsonify({"error": "Benchmark, model, and language are required"}), 400
     
     evaluator_file = request.files['evaluator']
-    jsonl_file = request.files['jsonl_file']
+    benchmark = request.form['benchmark']
+    model = request.form['model']
+    language = request.form['language']
     
-    # Check if files are selected
-    if evaluator_file.filename == '' or jsonl_file.filename == '':
-        return jsonify({"error": "No file selected"}), 400
+    # Check if evaluator file is selected
+    if evaluator_file.filename == '':
+        return jsonify({"error": "No evaluator file selected"}), 400
     
-    # Validate file extensions
+    # Validate evaluator file extension
     if not (evaluator_file.filename.endswith('.py') or evaluator_file.filename.endswith('.js')):
         return jsonify({"error": "Evaluator must be a .py or .js file"}), 400
-    
-    if not jsonl_file.filename.endswith('.jsonl'):
-        return jsonify({"error": "Data file must be a .jsonl file"}), 400
     
     try:
         # Save the evaluator file
         evaluator_path = os.path.join(app.config['UPLOAD_FOLDER'], 'evaluator' + os.path.splitext(evaluator_file.filename)[1])
         evaluator_file.save(evaluator_path)
         
-        # Save the JSONL file
-        jsonl_path = os.path.join(app.config['UPLOAD_FOLDER'], 'data.jsonl')
-        jsonl_file.save(jsonl_path)
+        # Construct the path to the JSONL file in frontend/public directory
+        jsonl_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
+                                'frontend',
+                                'public', 
+                                benchmark, 
+                                'outputs',
+                                model,
+                                f'{language}.jsonl')
+        
+        if not os.path.exists(jsonl_path):
+            return jsonify({"error": f"JSONL file not found at path: {jsonl_path}"}), 404
         
         # Process the files and get results
         results = process_evaluation(evaluator_path, jsonl_path)

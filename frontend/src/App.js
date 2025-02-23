@@ -22,7 +22,7 @@ function App() {
         />
         <Route path="/data-visualisation" element={<DataVisualisation />} />
         <Route path="/analytics" element={<Analytics />} />
-        <Route path="/custom" element={<CustomEvaluator />} />
+        <Route path="/custom-evaluator" element={<CustomEvaluator />} />
       </Routes>
     </Router>
   );
