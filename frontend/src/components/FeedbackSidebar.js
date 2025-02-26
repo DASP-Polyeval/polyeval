@@ -50,6 +50,35 @@ function FeedbackSidebar({
   }
   const fieldText = row[inlineField] || "No text available";
 
+  //rating criteria
+  const ratingCriteria = {
+    classification: [],
+    summarization: [
+      { key: "conciseness", label: "Conciseness and Coverage" },
+      { key: "informativeness", label: "Informativeness and Neutrality" },
+      { key: "fluency", label: "Fluency and Coherence" },
+      { key: "accuracy", label: "Accuracy and Relevance" },
+      { key: "readability", label: "Readability and Style" },
+      { key: "culturalSensitivity", label: "Cultural Sensitivity and Politeness" },
+    ],
+    translation: [
+      { key: "expressiveness", label: "Expressiveness" },
+      { key: "elegance", label: "Elegance" },
+      { key: "fluency", label: "Fluency and Coherence" },
+      { key: "accuracy", label: "Accuracy and Relevance" },
+      { key: "readability", label: "Readability and Style" },
+      { key: "culturalSensitivity", label: "Cultural Sensitivity and Politeness" },
+    ],
+    generation: [
+      { key: "engagement", label: "Engagement and Creativity" },
+      { key: "empathy", label: "Empathy and Helpfulness" },
+      { key: "fluency", label: "Fluency and Coherence" },
+      { key: "accuracy", label: "Accuracy and Relevance" },
+      { key: "readability", label: "Readability and Style" },
+      { key: "culturalSensitivity", label: "Cultural Sensitivity and Politeness" },
+    ],
+  };
+
   //task-specific errors
   const errorOptions = {
     generation : [
@@ -99,10 +128,24 @@ function FeedbackSidebar({
   const [errorType, setErrorType] = useState("");
   const [annotations, setAnnotations] = useState([]);
   const [annMsg, setAnnMsg] = useState("");
-  const [rating, setRating] = useState(0);
+  //const [rating, setRating] = useState(0);
   const [question, setQuestion] = useState("");
   const [comment, setComment] = useState("");
   const [commErrorMsg, setCommErrorMsg] = useState("");
+
+  const [generalRating, setGeneralRating] = useState(0);
+  const [ratings, setRatings] = useState({
+    conciseness: 0,
+    informativeness: 0,
+    fluency: 0,
+    accuracy: 0,
+    readability: 0,
+    culturalSensitivity: 0,
+    expressiveness: 0,
+    elegance: 0,
+    engagement: 0,
+    empathy: 0,
+  });
 
   // For resizing the drawer (optional).
   const [drawerWidth, setDrawerWidth] = useState("800px");
@@ -206,7 +249,7 @@ function FeedbackSidebar({
 
   // Submit comment.
   const handleCommentSubmit = async () => {
-    if (!rating || !question || comment.trim() === "") {
+    if (!ratings || !question || comment.trim() === "") {
       setCommErrorMsg(
         "Please provide a rating, select a question, and enter a comment."
       );
@@ -218,7 +261,8 @@ function FeedbackSidebar({
       row_data: row,
       question,
       feedback: comment,
-      rating,
+      //rating,
+      ratings: taskKey === "classification" ? { overall: generalRating } : ratings,
     };
     try {
       await api.post("/api/comments", commentPayload);
@@ -316,14 +360,38 @@ function FeedbackSidebar({
 
       {/* Section B: Comment Submission */}
       <Box sx={{ my: 2 }}>
-        <Typography variant="subtitle1">Submit Comment</Typography>
+        {/* <Typography variant="subtitle1">Submit Comment</Typography> */}
         <Box sx={{ my: 1 }}>
-          <Typography component="legend">Rating</Typography>
-          <Rating
-            value={rating}
-            onChange={(e, newValue) => setRating(newValue)}
-          />
+          <Typography component="legend">Rating:</Typography>
+
+          {/* Show only general rating for classification */}
+          {taskKey === "classification" ? (
+            <Box sx={{ my: 1 }}>
+            {/* <Typography component="legend">Rating:</Typography> */}
+            <Rating
+              value={generalRating}
+              onChange={(e, newValue) => setGeneralRating(newValue)}
+            />
+          </Box>
+          ): (
+            // Show task-specific ratings for other tasks
+            
+            (ratingCriteria[taskKey] || []).map(({ key, label }) => (
+              <Box key={key} sx={{ my: 1 }}>
+                <Typography component="legend">{label}</Typography>
+                  <Rating
+                    value={ratings[key]}
+                    onChange={(e, newValue) =>
+                      setRatings((prev) => ({ ...prev, [key]: newValue }))
+                    }
+                  />
+              </Box>
+          ))
+
+          )}
         </Box>
+          
+
         <FormControl component="fieldset" sx={{ my: 1 }}>
           <Typography variant="body2">Task-specific Question:</Typography>
           <RadioGroup
